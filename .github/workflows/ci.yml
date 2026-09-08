@@ -37,11 +37,9 @@ jobs:
 
       - run: pnpm test:e2e
 
-      - uses: treosh/lhci-action@v1
-        with:
-          version: 0.14.x
-          configPath: ./lighthouserc.json
-          uploadArtifacts: true
-          temporaryPublicStorage: true
+      - name: Lighthouse CI
+        run: |
+          set -euo pipefail
+          pnpm exec lhci autorun --config=./lighthouserc.json
         env:
           LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}
