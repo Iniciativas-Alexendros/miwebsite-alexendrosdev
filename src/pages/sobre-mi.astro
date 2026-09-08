@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { profile } from '../content/profile';
+---
+<Layout title="Sobre mí — Alexendros" description={profile.title}>
+  <div class="mx-auto max-w-4xl px-6 pt-12">
+    <h1 class="text-4xl font-bold">{profile.name} — {profile.role}</h1>
+    <p class="mt-4 text-muted">{profile.summary}</p>
+    <div class="mt-10">
+      <h2 class="font-bold">Método — 6 pasos con CI verde</h2>
+      <div class="mt-4 grid md:grid-cols-3 gap-4">
+        {profile.method.map(m=><div class="border border-border rounded-2xl p-4 bg-card"><div class="text-xs font-mono text-primary">0{m.step}</div><div class="font-bold mt-1">{m.title}</div><div class="text-sm text-muted mt-1">{m.desc}</div></div>)}
+      </div>
+    </div>
+    <div class="mt-10 border border-border rounded-2xl p-6 bg-card">
+      <h2 class="font-bold">Por qué esta web es distinta</h2>
+      <ul class="mt-3 list-disc pl-5 text-sm text-muted space-y-2">
+        <li>0 JS en rutas de contenido, Inter + JetBrains Mono self-hosted, sin Google Fonts, sin GA/Plausible</li>
+        <li>axe-core 0 violaciones en 6 rutas, Lighthouse CI ≥90 móvil 4 categorías, content-visibility below-fold</li>
+        <li>Contenido en Git validado por Zod en build, no CMS opaco. Flujo editorial draft/review/published</li>
+        <li>Privacidad real: Proton SMTP, Vercel, sin cookies no esenciales, consentimiento no pre-marcado RGPD Art 6.1.b</li>
+      </ul>
+    </div>
+  </div>
+</Layout>

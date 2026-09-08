@@ -1,0 +1,5 @@
+# Alexendros.dev — Cursor Rules (Astro MVP Conversion-Focused)
+Stack: Astro 4.16 + React island ContactForm.tsx client:load + Tailwind OKLCH + TS estricto + Zod + Vercel
+Principios: 0 JS contenido, self-hosted fonts Inter+JetBrains Mono, sin GA/cookies, WCAG AA+AAA, Lighthouse >=90 movil 4 cats, axe-core 0 violaciones 6 rutas
+Reglas: contenido tipado src/content/*.ts Zod, solo ContactForm client:load, OKLCH bg 0.14 fg 0.96 primary 0.75 0.18 95, focus-visible teclado NVDA AAA, sharp content-visibility LCP <1.65s, 1s vs 5s 3x conversion 0.1s +8.4% form 3 campos 3.2% vs 9+ 0.8% datos reales -65% LCP +40% reservas 48h->5min +300% 0 axe, API Zod honeypot Upstash Proton operaciones@alexendros.dev, CI typecheck build axe lhci, commits español
+DONE: build verde 0 TS errors Lighthouse >=90 axe 0 LCP <1.65s form Proton OG 1200x630

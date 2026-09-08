@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm';
+import { contact } from '../content/contact';
+import { site } from '../content/site';
+---
+<Layout title="Contacto — Alexendros" description="Formulario con contexto + Cal.com + email. Respuesta <24h.">
+  <div class="mx-auto max-w-4xl px-6 pt-12 grid md:grid-cols-[1.2fr_0.8fr] gap-10">
+    <div>
+      <h1 class="text-4xl font-bold">Contacto</h1>
+      <p class="text-muted mt-3">Ideal para consultas con contexto: alcance, plazos orientativos y enlaces relevantes. Respuesta directa a tu email.</p>
+      <div class="mt-6">
+        <ContactForm
+          client:load
+          subjects={[...contact.subjects]}
+          calUrl={site.social.cal}
+          successMessage={contact.messages.success}
+          errorMessage={contact.messages.error}
+        />
+      </div>
+    </div>
+    <div class="space-y-6">
+      <div class="border border-border rounded-2xl p-6 bg-card">
+        <h2 class="font-bold text-base">Canales</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          {contact.channels.map((c) => (
+            <li>
+              <a
+                href={c.href}
+                class="hover:text-primary"
+                {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                {c.label}
+              </a>
+              {c.external ? ' ↗' : ''}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="border border-border rounded-2xl p-6 bg-card">
+        <h2 class="font-bold text-base">Qué incluir para convertir rápido</h2>
+        <ul class="mt-3 list-disc pl-5 text-xs text-muted space-y-1">
+          <li>Objetivo de negocio (no solo features)</li>
+          <li>Presupuesto orientativo y deadline</li>
+          <li>Enlaces relevantes (web actual, referencia)</li>
+          <li>Si necesitas Stripe/PayPal, CMS, etc.</li>
+        </ul>
+        <div class="mt-4 text-xs font-mono text-muted">Fricción mínima = 3 campos requeridos. 78% abandono con 9+ campos.</div>
+      </div>
+      <div class="border border-dashed border-primary/30 rounded-2xl p-4 text-xs">
+        <b>Sin spam:</b> datos formulario máx 12 meses, base legal precontractual RGPD Art 6.1.b, Proton SMTP, Vercel. Ver <a href="/privacidad" class="underline">privacidad</a>.
+      </div>
+    </div>
+  </div>
+</Layout>

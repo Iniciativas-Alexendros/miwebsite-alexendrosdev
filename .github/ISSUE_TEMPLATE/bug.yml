@@ -1,0 +1,29 @@
+name: Reporte de bug
+description: Informa de un comportamiento incorrecto
+labels: [bug]
+body:
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: Descripción
+      description: Qué ocurre y qué esperabas que ocurriera.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduccion
+    attributes:
+      label: Pasos para reproducir
+      description: Lista numerada de pasos.
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: input
+    id: entorno
+    attributes:
+      label: Entorno
+      description: Navegador, dispositivo, versión/commit.
+    validations:
+      required: false

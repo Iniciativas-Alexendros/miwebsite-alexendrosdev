@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#141a21"/>
+  <rect x="48" y="48" width="1104" height="534" rx="24" fill="none" stroke="#FFC53D" stroke-opacity="0.25" stroke-width="2"/>
+  <text x="80" y="200" fill="#FFC53D" font-family="ui-monospace, monospace" font-size="72" font-weight="700">Alexendros.dev</text>
+  <text x="80" y="280" fill="#e8eaed" font-family="ui-monospace, monospace" font-size="36">webs que convierten</text>
+  <text x="80" y="520" fill="#8b949e" font-family="ui-monospace, monospace" font-size="24">Lighthouse e90 · axe 0 · LCP &lt;1.65s</text>
+</svg>

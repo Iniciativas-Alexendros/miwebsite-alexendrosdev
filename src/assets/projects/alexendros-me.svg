@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2430"/>
+      <stop offset="100%" stop-color="#141a21"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <text x="48" y="80" fill="#FFC53D" font-family="monospace" font-size="28" font-weight="700">alexendros-me</text>
+  <text x="48" y="140" fill="#e8eaed" font-family="monospace" font-size="20">98/100/100/100 · 0 axe</text>
+  <rect x="48" y="200" width="300" height="12" rx="6" fill="#FFC53D" fill-opacity="0.8"/>
+  <rect x="48" y="232" width="190" height="12" rx="6" fill="#FFC53D" fill-opacity="0.4"/>
+</svg>

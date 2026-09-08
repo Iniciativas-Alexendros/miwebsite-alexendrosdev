@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects } from '../../content/projects';
+---
+<Layout title="Proyectos — Alexendros" description="4 proyectos con métricas reales: LCP, conversión, pedidos, a11y.">
+  <div class="mx-auto max-w-6xl px-6 pt-12">
+    <h1 class="text-4xl font-bold">Proyectos con métricas reales</h1>
+    <p class="text-muted mt-3">No galería. Cada proyecto: contexto, reto, solución, responsabilidades, highlights y resultados medidos. Profundidad > cantidad (70% reclutadores).</p>
+    <div class="mt-8 grid md:grid-cols-2 gap-6">
+      {projects.map(p=><ProjectCard project={p} />)}
+    </div>
+  </div>
+</Layout>

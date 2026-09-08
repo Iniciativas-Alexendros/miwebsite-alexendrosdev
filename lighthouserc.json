@@ -1,0 +1,39 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 2,
+      "startServerCommand": "pnpm preview",
+      "startServerReadyPattern": "Accepting connections|Local:",
+      "url": [
+        "http://127.0.0.1:4321/",
+        "http://127.0.0.1:4321/servicios/",
+        "http://127.0.0.1:4321/servicios/produccion-sitios-web/",
+        "http://127.0.0.1:4321/proyectos/",
+        "http://127.0.0.1:4321/proyectos/front-valencia/",
+        "http://127.0.0.1:4321/contacto/"
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "screenEmulation": {
+          "mobile": true,
+          "width": 360,
+          "height": 640,
+          "deviceScaleFactor": 2,
+          "disabled": false
+        },
+        "onlyCategories": ["performance", "accessibility", "best-practices", "seo"]
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.9 }],
+        "categories:accessibility": ["error", { "minScore": 0.9 }],
+        "categories:best-practices": ["error", { "minScore": 0.9 }],
+        "categories:seo": ["error", { "minScore": 0.9 }]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}
