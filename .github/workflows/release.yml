@@ -3,7 +3,7 @@ name: Release
 
 on:
   workflow_run:
-    workflows: ['CI — typecheck + build + a11y + lhci']
+    workflows: ['CI — typecheck + lint + format + vitest + build + a11y + lhci']
     types: [completed]
     branches: [main]
   workflow_dispatch:
