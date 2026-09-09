@@ -1,6 +1,17 @@
-# alexendros.dev — Astro MVP (conversión + contratación)
+# alexendros.dev
 
-Stack: Astro 4 hybrid + React island (`ContactForm`) + Tailwind OKLCH + TypeScript estricto + Zod + Vercel serverless API.
+Sitio profesional de Alexendros (conversión + contratación). **Producción:** [https://alexendros.dev](https://alexendros.dev).
+
+| | |
+| --- | --- |
+| Repo canónico | [`Iniciativas-Alexendros/miwebsite-alexendrosdev`](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev) |
+| Proyecto Vercel | **`alexendros-dev`** (Hobby, team `alexendros-team`) |
+| Production branch | `main` → deploy automático |
+| Predecesor | [`nuevowebsite-alexendrosdev`](https://github.com/Iniciativas-Alexendros/nuevowebsite-alexendrosdev) (archivado, Next.js) |
+
+## Stack
+
+Astro 4 hybrid + isla React (`ContactForm`, `client:load`) + Tailwind OKLCH + TypeScript estricto + Zod + API serverless en Vercel. Fuentes Inter + JetBrains Mono self-hosted. Sin GA ni cookies de tracking; sí Vercel Analytics y Speed Insights (agregados).
 
 ## Dev
 
@@ -13,42 +24,39 @@ pnpm build && pnpm preview
 pnpm test:e2e
 ```
 
-`preview` sirve `.vercel/output/static` (el adapter Vercel no soporta `astro preview`).
+`preview` sirve `.vercel/output/static` (el adapter Vercel no soporta `astro preview`). Node **20** (`engines.node` / `.nvmrc`).
 
 ## CI
 
 GitHub Actions: typecheck → lint → format:check → vitest → build → Playwright (axe 6 rutas + contact) → Lighthouse CI móvil ≥90.
 
-## Deploy Vercel
+## Deploy
 
-**Hobby + repo público** → preview automático por PR (sin Pro). Proyecto Vercel: **`alexendros-dev`**. Production branch: `main`. Framework Preset **Astro**; Node **20** (`engines.node` / `.nvmrc`).
+- **Hobby + repo público** → preview automático por PR. Previews sin SSO (URLs `*.vercel.app` compartibles).
+- **Promote = merge a `main`**. El workflow `release.yml` solo crea tags/releases; **versionado ≠ deploy**.
+- Dominio apex `alexendros.dev` (+ redirect `www` → apex) en el proyecto `alexendros-dev`.
 
-1. Repo enlazado en Vercel (Git → Deployments). Previews sin SSO (URLs `*.vercel.app` compartibles).
-2. Env (Production + Preview) — **obligatorias para el formulario**:
-   - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` (Proton app password)
-   - `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` (sin ellas no hay rate-limit)
-   - `PUBLIC_SITE_URL=https://alexendros.dev` (ya en Preview/Production/Development)
-3. Smoke test del formulario en preview:
+### Variables de entorno (Production + Preview)
+
+Obligatorias para que el formulario funcione ([issue #13](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/13)):
+
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` (Proton app password)
+- `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`
+- `PUBLIC_SITE_URL=https://alexendros.dev`
+
+Sin SMTP/Upstash, `POST /api/contact` responde HTTP 500 (`Service unavailable`); el resto del sitio sirve con normalidad.
 
 ```bash
-export PREVIEW_URL='https://TU-DEPLOYMENT.vercel.app'
-curl -sS -X POST "$PREVIEW_URL/api/contact" \
+curl -sS -X POST 'https://alexendros.dev/api/contact' \
   -H 'Content-Type: application/json' \
-  -d '{"name":"Smoke","email":"test@example.com","subject":"otro","message":"smoke preview alexendros","consent":true}'
-# Con SMTP configurado: {"ok":true} + email en operaciones@alexendros.dev
-# Sin SMTP: {"error":"Service unavailable"} (HTTP 500) — API alcanzable, falta env
+  -d '{"name":"Smoke","email":"test@example.com","subject":"otro","message":"smoke prod alexendros","consent":true}'
+# Con SMTP: {"ok":true} + email en operaciones@alexendros.dev
+# Sin SMTP: {"error":"Service unavailable"} (HTTP 500)
 ```
-
-### Go-live (apex) — cuando toque prod
-
-1. Env **Production** completas (SMTP + Upstash + `PUBLIC_SITE_URL=https://alexendros.dev`).
-2. Dominio apex `alexendros.dev` en Vercel Domains + DNS del panel.
-3. Promote = merge a `main` / producción Vercel. El workflow `release.yml` solo crea tags/releases; **versionado ≠ deploy**.
-4. Smoke `POST /api/contact` en prod + LCP en Speed Insights (objetivo &lt;1.65s).
 
 ## DONE
 
-- Build verde, 0 errores TS
-- axe-core 0 violaciones en 6 rutas
-- Formulario → Upstash rate-limit + Proton SMTP
-- OG 1200×630, favicon, fonts self-hosted, sin GA/cookies de tracking (métricas agregadas Vercel)
+- Build verde, 0 errores TS; axe-core 0 violaciones en 6 rutas; Lighthouse CI ≥90 móvil
+- Formulario (código) → Upstash rate-limit + Proton SMTP (env pendientes #13)
+- OG 1200×630, favicon, fonts self-hosted, métricas agregadas Vercel
+- Apex en producción sobre este repo / proyecto `alexendros-dev`
