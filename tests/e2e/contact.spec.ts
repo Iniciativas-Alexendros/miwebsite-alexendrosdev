@@ -20,9 +20,9 @@ test('contact form validacion Zod y envio', async ({ page }) => {
 
   await page.getByLabel('Nombre*').fill('Test Cliente');
   await page.getByLabel('Email*').fill('test@example.com');
-  await page.getByLabel(/Mensaje\*/).fill(
-    'Proyecto ecommerce Stripe presupuesto 5k deadline 1 mes web actual https://example.com'
-  );
+  await page
+    .getByLabel(/Mensaje\*/)
+    .fill('Proyecto ecommerce Stripe presupuesto 5k deadline 1 mes web actual https://example.com');
   await page.getByLabel(/Acepto/).check();
   await page.getByRole('button', { name: /Enviar/ }).click();
   await expect(page.getByRole('status')).toContainText(/Mensaje enviado/i, { timeout: 10000 });

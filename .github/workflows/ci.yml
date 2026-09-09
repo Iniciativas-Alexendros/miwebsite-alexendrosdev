@@ -1,4 +1,4 @@
-name: CI — typecheck + build + a11y + lhci
+name: CI — typecheck + lint + format + vitest + build + a11y + lhci
 
 on:
   push:
@@ -24,12 +24,18 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version-file: ".nvmrc"
+          node-version-file: '.nvmrc'
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm typecheck
+
+      - run: pnpm lint
+
+      - run: pnpm format:check
+
+      - run: pnpm test
 
       - run: pnpm build
 

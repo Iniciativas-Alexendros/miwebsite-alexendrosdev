@@ -1,33 +1,64 @@
 ---
 import { site } from '../content/site';
 ---
+
 <footer class="border-t border-border mt-20 cv-auto">
   <div class="mx-auto max-w-6xl px-6 py-10 grid md:grid-cols-3 gap-8 text-sm">
     <div>
       <div class="font-mono font-bold">Alexendros<span class="text-primary">.dev</span></div>
-      <p class="text-muted mt-2 max-w-xs">Webs que convierten, auditorías que priorizan, consultoría sin hype. Valencia — remoto.</p>
+      <p class="text-muted mt-2 max-w-xs">
+        Webs que convierten, auditorías que priorizan, consultoría sin hype. Valencia — remoto.
+      </p>
     </div>
     <div class="flex gap-6">
       <div>
         <div class="font-medium mb-2">Navegación</div>
         <ul class="space-y-1 text-muted">
-          {site.nav.map((i) => <li><a href={i.href} class="hover:text-fg focus-ring rounded">{i.label}</a></li>)}
+          {
+            site.nav.map((i) => (
+              <li>
+                <a href={i.href} class="hover:text-fg focus-ring rounded">
+                  {i.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
       <div>
         <div class="font-medium mb-2">Legal</div>
         <ul class="space-y-1 text-muted">
-          {site.footerNav.map((i) => <li><a href={i.href} class="hover:text-fg focus-ring rounded">{i.label}</a></li>)}
+          {
+            site.footerNav.map((i) => (
+              <li>
+                <a href={i.href} class="hover:text-fg focus-ring rounded">
+                  {i.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </div>
     <div class="text-muted">
       <a href={site.social.email} class="hover:text-fg focus-ring rounded">hola@alexendros.dev</a>
       <div class="mt-2 flex gap-3">
-        <a href={site.social.github} class="hover:text-fg focus-ring rounded" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href={site.social.linkedin} class="hover:text-fg focus-ring rounded" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a
+          href={site.social.github}
+          class="hover:text-fg focus-ring rounded"
+          target="_blank"
+          rel="noopener noreferrer">GitHub</a
+        >
+        <a
+          href={site.social.linkedin}
+          class="hover:text-fg focus-ring rounded"
+          target="_blank"
+          rel="noopener noreferrer">LinkedIn</a
+        >
       </div>
-      <div class="mt-4 text-xs">Sin cookies no esenciales. Sin GA. Hecho con Astro + TS estricto.</div>
+      <div class="mt-4 text-xs">
+        Sin GA ni cookies de tracking; métricas agregadas Vercel. Hecho con Astro + TS estricto.
+      </div>
     </div>
   </div>
 </footer>

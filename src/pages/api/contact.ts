@@ -104,12 +104,14 @@ export const POST: APIRoute = async ({ request }) => {
       text: `Nombre: ${name}\nEmail: ${email}\nEmpresa: ${company || '—'}\nAsunto: ${subject}\n\n${message}`
     });
 
-    console.info(JSON.stringify({
-      event: 'contact_sent',
-      ok: true,
-      subjectLen: subject.length,
-      messageLen: message.length
-    }));
+    console.info(
+      JSON.stringify({
+        event: 'contact_sent',
+        ok: true,
+        subjectLen: subject.length,
+        messageLen: message.length
+      })
+    );
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,

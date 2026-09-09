@@ -8,10 +8,10 @@ No abras issues públicos con exploits, PoCs ofensivos, tokens, secretos ni PII.
 
 ## Versiones soportadas
 
-| Versión | Soporte |
-| --- | --- |
-| `main` / última Release etiquetada (`vX.Y.Z`) | Activo |
-| Tags anteriores | Solo rollback operativo; sin parches proactivos |
+| Versión                                       | Soporte                                         |
+| --------------------------------------------- | ----------------------------------------------- |
+| `main` / última Release etiquetada (`vX.Y.Z`) | Activo                                          |
+| Tags anteriores                               | Solo rollback operativo; sin parches proactivos |
 
 ## Plazo orientativo de respuesta
 

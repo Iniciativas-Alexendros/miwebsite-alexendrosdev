@@ -29,10 +29,22 @@ export const profile = {
     'Playwright'
   ],
   method: [
-    { step: 1, title: 'Definición alcance', desc: 'Contexto, objetivos de negocio y métricas de conversión.' },
-    { step: 2, title: 'Arquitectura primero', desc: 'ADRs, stack, integraciones Stripe/PayPal, modelo de datos.' },
+    {
+      step: 1,
+      title: 'Definición alcance',
+      desc: 'Contexto, objetivos de negocio y métricas de conversión.'
+    },
+    {
+      step: 2,
+      title: 'Arquitectura primero',
+      desc: 'ADRs, stack, integraciones Stripe/PayPal, modelo de datos.'
+    },
     { step: 3, title: 'TS estricto + a11y', desc: 'Zod, componentes accesibles, tests.' },
-    { step: 4, title: 'Validación CI', desc: 'typecheck, lint, tests, axe-core 6 rutas, Lighthouse CI.' },
+    {
+      step: 4,
+      title: 'Validación CI',
+      desc: 'typecheck, lint, tests, axe-core 6 rutas, Lighthouse CI.'
+    },
     { step: 5, title: 'Deploy Vercel', desc: 'Preview → producción con PROMOTE. <1.65s LCP.' },
     { step: 6, title: 'Transferencia', desc: 'Docs, formación 30min, 30 días soporte.' }
   ],
