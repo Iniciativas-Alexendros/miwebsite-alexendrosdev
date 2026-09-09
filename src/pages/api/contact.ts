@@ -3,11 +3,14 @@ import nodemailer from 'nodemailer';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 import { escapeHtml, isHoneypotFilled, parseContactBody } from '../../lib/contactSchema';
+import { resolveSmtpConfig } from '../../lib/smtpConfig';
 
 export const prerender = false;
 
 const MAIL_FROM = 'operaciones@alexendros.dev';
 const MAIL_TO = 'operaciones@alexendros.dev';
+
+const JSON_HEADERS = { 'Content-Type': 'application/json' } as const;
 
 function clientIp(request: Request): string {
   const forwarded = request.headers.get('x-forwarded-for');
@@ -26,6 +29,13 @@ function getRatelimit(): Ratelimit | null {
   });
 }
 
+function serviceUnavailable(): Response {
+  return new Response(JSON.stringify({ error: 'Service unavailable' }), {
+    status: 503,
+    headers: JSON_HEADERS
+  });
+}
+
 export const POST: APIRoute = async ({ request }) => {
   const data = await request.json().catch(() => null);
   const parsed = parseContactBody(data);
@@ -33,14 +43,14 @@ export const POST: APIRoute = async ({ request }) => {
   if (!parsed.success) {
     return new Response(JSON.stringify({ error: parsed.error.flatten() }), {
       status: 400,
-      headers: { 'Content-Type': 'application/json' }
+      headers: JSON_HEADERS
     });
   }
 
   if (isHoneypotFilled(parsed.data.honeypot)) {
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' }
+      headers: JSON_HEADERS
     });
   }
 
@@ -52,23 +62,22 @@ export const POST: APIRoute = async ({ request }) => {
       console.info(JSON.stringify({ event: 'contact_rate_limited', ok: false }));
       return new Response(JSON.stringify({ error: 'Too many requests' }), {
         status: 429,
-        headers: { 'Content-Type': 'application/json' }
+        headers: JSON_HEADERS
       });
     }
   }
 
   const { name, email, company, subject, message } = parsed.data;
-  const host = import.meta.env.SMTP_HOST;
-  const user = import.meta.env.SMTP_USER;
-  const pass = import.meta.env.SMTP_PASS;
-  const port = Number(import.meta.env.SMTP_PORT || 587);
+  const smtp = resolveSmtpConfig({
+    SMTP_HOST: import.meta.env.SMTP_HOST,
+    SMTP_PORT: import.meta.env.SMTP_PORT,
+    SMTP_USER: import.meta.env.SMTP_USER,
+    SMTP_PASS: import.meta.env.SMTP_PASS
+  });
 
-  if (!host || !user || !pass) {
+  if (!smtp) {
     console.error(JSON.stringify({ event: 'contact_smtp_misconfigured', ok: false }));
-    return new Response(JSON.stringify({ error: 'Service unavailable' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return serviceUnavailable();
   }
 
   const safeName = escapeHtml(name);
@@ -89,10 +98,10 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     const transporter = nodemailer.createTransport({
-      host,
-      port,
-      secure: port === 465,
-      auth: { user, pass }
+      host: smtp.host,
+      port: smtp.port,
+      secure: smtp.port === 465,
+      auth: { user: smtp.user, pass: smtp.pass }
     });
 
     await transporter.sendMail({
@@ -115,13 +124,13 @@ export const POST: APIRoute = async ({ request }) => {
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' }
+      headers: JSON_HEADERS
     });
   } catch {
     console.error(JSON.stringify({ event: 'contact_smtp_error', ok: false }));
     return new Response(JSON.stringify({ error: 'Send failed' }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' }
+      headers: JSON_HEADERS
     });
   }
 };

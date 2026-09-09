@@ -38,20 +38,27 @@ GitHub Actions: typecheck → lint → format:check → vitest → build → Pla
 
 ### Variables de entorno (Production + Preview)
 
-Obligatorias para que el formulario funcione ([issue #13](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/13)):
+Obligatorias para que el formulario funcione ([issue #13](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/13)). Cargarlas en el proyecto Vercel **`alexendros-dev`** (panel o `vercel env add`); **nunca** en git:
 
 - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` (Proton app password)
 - `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`
 - `PUBLIC_SITE_URL=https://alexendros.dev`
 
-Sin SMTP/Upstash, `POST /api/contact` responde HTTP 500 (`Service unavailable`); el resto del sitio sirve con normalidad.
+Procedimiento (sin imprimir valores):
+
+1. `vercel link` al proyecto `alexendros-dev`.
+2. `vercel env ls production` / `preview` para comprobar nombres presentes.
+3. Añadir o rotar secretos con `vercel env add <NAME> production` (y Preview solo con sandbox SMTP/Upstash; no reutilizar prod si las previews pueden enviar correo a terceros).
+4. Redeploy Production tras cargar SMTP.
+
+Sin SMTP (o con `SMTP_PORT` inválido), `POST /api/contact` responde **HTTP 503** con JSON genérico `{ "error": "Service unavailable" }` y log servidor `contact_smtp_misconfigured` (sin PII ni nombres de variables). El resto del sitio sirve con normalidad.
 
 ```bash
 curl -sS -X POST 'https://alexendros.dev/api/contact' \
   -H 'Content-Type: application/json' \
   -d '{"name":"Smoke","email":"test@example.com","subject":"otro","message":"smoke prod alexendros","consent":true}'
 # Con SMTP: {"ok":true} + email en operaciones@alexendros.dev
-# Sin SMTP: {"error":"Service unavailable"} (HTTP 500)
+# Sin SMTP: {"error":"Service unavailable"} (HTTP 503)
 ```
 
 ## DONE
