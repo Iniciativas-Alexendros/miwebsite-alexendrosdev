@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { track } from '@vercel/analytics';
 import { parseContactBody } from '../lib/contactSchema';
 
 type Props = {
@@ -45,6 +46,7 @@ export default function ContactForm({ subjects, calUrl, successMessage, errorMes
         setStatus('error');
         return;
       }
+      track('contact_form_success');
       setStatus('ok');
     } catch {
       setStatus('error');
