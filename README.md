@@ -51,7 +51,9 @@ Procedimiento (sin imprimir valores):
 3. Añadir o rotar secretos con `vercel env add <NAME> production` (y Preview solo con sandbox SMTP/Upstash; no reutilizar prod si las previews pueden enviar correo a terceros).
 4. Redeploy Production tras cargar SMTP.
 
-Sin SMTP (o con `SMTP_PORT` inválido), `POST /api/contact` responde **HTTP 503** con JSON genérico `{ "error": "Service unavailable" }` y log servidor `contact_smtp_misconfigured` (sin PII ni nombres de variables). El resto del sitio sirve con normalidad.
+Sin SMTP (o con `SMTP_PORT` inválido), o sin Upstash / Redis caído, `POST /api/contact` responde **HTTP 503** con JSON genérico `{ "error": "Service unavailable" }` (fail-closed antispam; logs `contact_smtp_misconfigured` / `contact_redis_*` sin PII). El resto del sitio sirve con normalidad.
+
+Contrato resumido: solo POST + `Content-Type: application/json`; body ≤ 16 KiB; validación Zod genérica (400); rate limit 10/min → 429 + `Retry-After`; honeypot → 200 sin correo.
 
 ```bash
 curl -sS -X POST 'https://alexendros.dev/api/contact' \
