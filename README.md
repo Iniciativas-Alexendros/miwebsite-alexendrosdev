@@ -32,9 +32,11 @@ GitHub Actions: typecheck → lint → format:check → vitest → build → Pla
 
 ## Deploy
 
-- **Hobby + repo público** → preview automático por PR. Previews sin SSO (URLs `*.vercel.app` compartibles).
-- **Promote = merge a `main`**. El workflow `release.yml` solo crea tags/releases; **versionado ≠ deploy**.
+- **Hobby + repo público** → preview automático por PR (`*.vercel.app`). Previews sin SSO (decisión 2A; URLs compartibles).
+- **Promote = merge a `main`** con CI verde. No desplegar a Production desde ramas de feature ni “Promote” ad-hoc sin revisión.
+- El workflow `release.yml` solo crea tags/releases GitHub; **versionado ≠ deploy** a Vercel.
 - Dominio apex `alexendros.dev` (+ redirect `www` → apex) en el proyecto `alexendros-dev`.
+- Checklist merge: typecheck, lint, format, vitest, build, e2e/axe, LHCI ≥90 móvil en el PR antes de fusionar.
 
 ### Variables de entorno (Production + Preview)
 
