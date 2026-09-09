@@ -20,11 +20,17 @@ function walk(dir) {
     }
     if (entry.name !== '.vc-config.json') continue;
     const config = JSON.parse(fs.readFileSync(full, 'utf8'));
-    if (typeof config.runtime === 'string' && config.runtime !== TARGET && config.runtime !== 'edge') {
+    if (
+      typeof config.runtime === 'string' &&
+      config.runtime !== TARGET &&
+      config.runtime !== 'edge'
+    ) {
       const prev = config.runtime;
       config.runtime = TARGET;
       fs.writeFileSync(full, JSON.stringify(config));
-      console.log(`[fix-vercel-runtime] ${path.relative(process.cwd(), full)}: ${prev} → ${TARGET}`);
+      console.log(
+        `[fix-vercel-runtime] ${path.relative(process.cwd(), full)}: ${prev} → ${TARGET}`
+      );
     }
   }
 }
