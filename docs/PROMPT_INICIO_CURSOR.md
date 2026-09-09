@@ -1,22 +1,18 @@
-# PROMPT INICIO CURSOR — COPIAR EN CURSOR CHAT AGENT
+# PROMPT INICIO CURSOR — COPIAR EN AGENT MODE
 
-Actua como Senior Full Stack + CRO + a11y. Estas en cursor-bundle-final. Objetivo: MVP Astro listo produccion Vercel con maxima conversion y contratacion.
+Actúa como Senior Full Stack + CRO + a11y. Estás en el repo canónico **miwebsite-alexendrosdev** (Astro MVP en producción en https://alexendros.dev, proyecto Vercel `alexendros-dev`).
 
-Contexto: Alexendros, dev full stack Valencia, 3 servicios alcance cerrado (produccion webs, auditorias, consultoria), 4 proyectos metricas reales (-65% LCP, +40% reservas, 48h->5min venta, +300% pedidos, 0 axe-core, 98/100/100/100 Lighthouse). Stack Astro 4.16 + TS estricto + Tailwind OKLCH + Zod + Stripe/Payload + Vercel. Sin GA, sin cookies no esenciales, privacidad real Proton SMTP.
+Contexto: Alexendros, full stack Valencia. 3 servicios de alcance cerrado, 4 proyectos con métricas reales. Stack Astro 4.16 + TS estricto + Tailwind OKLCH + Zod + Vercel. Sin GA; contacto vía Proton SMTP + Upstash (env en Vercel: issue #13).
 
-Lee .cursorrules, PLAN.md, docs/IDENTITY.md, docs/INSTRUCCIONES_CURSOR.md.
+Lee `.cursorrules`, `PLAN.md`, `docs/IDENTITY.md`, `docs/INSTRUCCIONES_CURSOR.md`, `README.md`.
 
-Ejecuta en orden:
+Modo por defecto: **mantenimiento** (no greenfield). Antes de cambiar código:
 
-1. pnpm install && pnpm build — corrige errores TS, asegura 29 archivos base compilan
-2. Implementa src/pages/api/contact.ts REAL: Upstash Redis rate-limit 10 req/min por IP, nodemailer + Proton SMTP (SMTP_HOST, SMTP_USER, SMTP_PASS en .env), From: operaciones@alexendros.dev To: operaciones@alexendros.dev Reply-To: form.email, asunto [alexendros.dev] {subject} - {name}, HTML escapado con datos, log sin PII, honeypot check, Zod validacion 20-2000 chars mensaje, consent boolean
-3. Crea public/favicon.svg (A ambar #FFC53D sobre bg oscuro #141a21 32x32) y public/og/default.png 1200x630 con marca Alexendros.dev tipografia mono, hecho con sharp o placeholder SVG
-4. Crea tests/e2e/a11y.spec.ts (ya existe) asegurate pasa 0 violaciones axe-core en 6 rutas: /, /servicios, /servicios/produccion-sitios-web, /proyectos, /proyectos/front-valencia, /contacto. Crea tests/e2e/contact.spec.ts validacion Zod y envio ok
-5. Crea lighthouserc.json para Lighthouse CI >=90 movil en 6 rutas y .github/workflows/ci.yml con jobs typecheck build a11y lhci
-6. Optimiza: usa Astro <Image> para proyectos con sharp, content-visibility: auto below-fold en src/styles/global.css, Inter Variable + JetBrains Mono Variable self-hosted (ya en layout, verifica)
-7. Anade testimonios placeholder con estructura foto/nombre/empresa en Home y Servicios (cerca de pricing reduce ansiedad compra)
-8. Verifica DONE: pnpm build verde, pnpm preview OK http://localhost:4321, Lighthouse >=90, axe 0, LCP <1.65s, form envia a Proton, OG existe
+1. Confirma el objetivo y el alcance (no pricing, no CMS, no Google Fonts, no ampliar servicios).
+2. Trabaja en rama `cursor/…` desde `main`; PR borrador al terminar.
+3. Verifica con `pnpm typecheck`, `pnpm lint`, `pnpm test`, `pnpm build` y e2e/axe cuando toque UI o a11y.
+4. Documenta en README/PLAN solo si el cambio altera operación, deploy o contratos públicos.
 
-No toques pricing sin confirmar, no anadas CMS ni Google Fonts, no cambies alcance servicios. Prioriza conversion: form 3 campos 3.2% vs 9+ 0.8% (78% abandono), 1s vs5s 3x conversion, 0.1s mejora +8.4% conversion, 85% hiring managers revisan portfolio, 88% clientes investigan online, 70% recruiters prefiere profundidad.
+Prioridades de producto: LCP &lt;1.65s, Lighthouse ≥90 móvil, 0 violaciones axe en las 6 rutas CI, formulario de 3 campos (+ asunto) con honeypot, privacidad real.
 
-Entrega resumen con metricas y proximos pasos para Vercel deploy.
+Entrega: resumen de cambios, cómo probar y riesgos (p. ej. formulario sin SMTP hasta #13).

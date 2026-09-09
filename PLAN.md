@@ -1,58 +1,36 @@
-# PLAN MVP Astro — alexendros.dev ideal para conversión + contratación
+# Estado — alexendros.dev (Astro MVP)
 
-Objetivo: MVP listo en 1 sprint (3-4 días) con máxima eficacia según métricas reales.
+MVP en **producción** en [https://alexendros.dev](https://alexendros.dev). Repo canónico: `Iniciativas-Alexendros/miwebsite-alexendrosdev`. Proyecto Vercel: **`alexendros-dev`**.
 
-## Métricas objetivo (no negociables)
+## Objetivos cumplidos
 
-- LCP <1.65s (avg primera página Google), CLS <0.1, INP <200ms
-- Lighthouse CI ≥90 móvil en 4 categorías en 6 rutas: /, /servicios, /servicios/_, /proyectos, /proyectos/_, /contacto
-- axe-core 0 violaciones en esas 6 rutas
-- Formulario: 3 campos obligatorios (nombre,email,mensaje) + select asunto = 3.2% conversión vs 0.8% con 9+ campos. Honeypot anti-spam, sin captcha que baja conversión 3.2%→2.4%
-- Bounce objetivo <20% (vs 9% a 2s, 38% a 5s). 0.1s mejora = +8.4% conversión.
+- LCP objetivo &lt;1.65s; CLS &lt;0.1; INP &lt;200ms (Speed Insights en prod)
+- Lighthouse CI ≥90 móvil en 4 categorías (6 rutas)
+- axe-core 0 violaciones en `/`, `/servicios`, `/servicios/*`, `/proyectos`, `/proyectos/*`, `/contacto`
+- Formulario 3 campos + asunto + honeypot (sin captcha); código listo con Upstash + Proton SMTP
+- Sin cookies no esenciales, sin GA; Analytics/Speed Insights agregados
 
-## Arquitectura para OpenCode
+## Arquitectura entregada
 
-1. **Fase 0 — Setup**
-   - pnpm install, astro check
-   - Configurar tailwind OKLCH tokens, fuentes self-hosted Inter Variable + JetBrains Mono Variable (evitar Google Fonts → privacidad + perf)
-   - Content en src/content/_.ts con Zod validación en build. getPublished_ filtra status published && visibility publico
+- Contenido tipado en `src/content/*.ts` (Zod en build)
+- Páginas: home, servicios, proyectos, sobre-mí, contacto, aviso-legal, privacidad
+- Única isla cliente: `ContactForm.tsx` (`client:load`)
+- API: `src/pages/api/contact.ts` (Zod, honeypot, rate-limit, nodemailer)
+- CI: typecheck, lint, format, vitest, build, Playwright axe, LHCI
+- Deploy Hobby: preview por PR; producción = merge a `main`
 
-2. **Fase 1 — Páginas críticas (orden conversión)**
-   - / → Hero con terminal (prueba social técnica), 3 servicios, 3 proyectos featured con resultados, CTA doble (form + Cal.com)
-   - /servicios/[slug] → scope, entregables, exclusiones, proceso, stack, pricing desde, métricas, CTA sticky
-   - /proyectos/[slug] → contexto/reto/solución, resultados con %, stack, links prod/github, CTA "¿Similar?"
-   - /contacto → ContactForm.tsx (React island) + canales alternativos. Validación Zod 20-2000 chars mensaje, consent RGPD no pre-marcado
-   - /sobre-mi → método 6 pasos, por qué distinto (0 JS contenido, sin GA)
+## Pendiente operativo
 
-3. **Fase 2 — API y legal**
-   - /api/contact: rate-limit Upstash Redis, nodemailer Proton SMTP (From/To operaciones@alexendros.dev, Reply-To usuario), log sin PII, 12 meses retención
-   - /aviso-legal, /privacidad: contenido tipado legal/aviso-legal.ts y privacidad.ts, fecha última actualización
+| Item                                                  | Issue / nota                                                                                               |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Env SMTP + Upstash en Vercel                          | [#13](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/13)                         |
+| Migrar Node 22/24 antes de 2026-10-01                 | [#11](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/11)                         |
+| Majors Dependabot (zod 4, nodemailer 10, React/Astro) | [#12](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/12) — no mergear sin triage |
 
-4. **Fase 3 — CI/CD y SEO**
-   - GitHub Actions: typecheck, lint, format, vitest, build, playwright axe-core 6 rutas, lighthouse-ci
-   - Deploy Vercel: preview en PR, PROMOTE a prod al merge a main. Dominio apex https://alexendros.dev (ADR-0029)
-   - SEO: canonical, OG, JSON-LD Person + BlogPosting, sitemap.xml, robots.txt, <3min build
+## Predecesor
 
-5. **Fase 4 — Optimización conversión**
-   - Añadir testimonios reales con foto/nombre/empresa en Home y Servicios (testimonios cerca de pricing reduce ansiedad)
-   - Pricing transparente: desde X€ + timeline + qué no incluye → +trust (estudios: pricing + testimonios = credibilidad)
-   - Calendly embed en /contacto como alternativa a form (reduce abandono 78%)
-   - content-visibility: auto para categorías stack below-fold, sharp para imágenes
+El sitio Next.js en `nuevowebsite-alexendrosdev` está **archivado**. No hay redirecciones legacy de rutas; lanzamiento limpio sobre este stack Astro.
 
-## Estructura carpetas final
+## Criterios de mantenimiento
 
-src/content/site.ts, profile.ts, services.ts, projects.ts, contact.ts
-src/components/Hero, ServiceCard, ProjectCard, ContactForm, Header, Footer
-src/layouts/Layout.astro con JSON-LD
-src/pages/index, servicios/[slug], proyectos/[slug], sobre-mi, contacto, aviso-legal, privacidad, api/contact.ts
-
-## Criterios DONE
-
-- Build verde, 0 TS errors, 0 axe violations, Lighthouse ≥90 móvil, <1.65s LCP en Vercel analytics
-- Formulario envía a Proton SMTP y muestra mensaje éxito + link Cal.com
-- 4 proyectos y 3 servicios visibles con métricas reales del extraction file
-- Sin cookies no esenciales, sin GA, sin fonts terceros
-
-## Siguiente paso OpenCode
-
-`opencode run` → implementar API contact real, añadir imágenes optimizadas Astro Assets para cada proyecto, y tests e2e contacto.
+No tocar pricing sin confirmar; no añadir CMS ni Google Fonts; no ampliar alcance de servicios sin decisión explícita. Commits y PRs en español; ramas `cursor/…` + PR borrador desde `main`.

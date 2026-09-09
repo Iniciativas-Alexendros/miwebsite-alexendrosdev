@@ -1,5 +1,7 @@
 # IDENTIDAD DE CADA ELEMENTO — alexendros.dev
 
+Repo canónico: `Iniciativas-Alexendros/miwebsite-alexendrosdev`. Deploy: Vercel Hobby proyecto **`alexendros-dev`** (apex producción).
+
 ## site.ts
 
 Config global: name, url https://alexendros.dev apex, titleDefault "webs que convierten", nav Servicios/Proyectos/Sobre mi/Contacto, footer legal, social GitHub/LinkedIn/mailto/cal.com. Fuente verdad SEO canonical OG JSON-LD Person.
