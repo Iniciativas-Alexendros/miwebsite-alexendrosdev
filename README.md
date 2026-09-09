@@ -2,12 +2,12 @@
 
 Sitio profesional de Alexendros (conversión + contratación). **Producción:** [https://alexendros.dev](https://alexendros.dev).
 
-| | |
-| --- | --- |
-| Repo canónico | [`Iniciativas-Alexendros/miwebsite-alexendrosdev`](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev) |
-| Proyecto Vercel | **`alexendros-dev`** (Hobby, team `alexendros-team`) |
-| Production branch | `main` → deploy automático |
-| Predecesor | [`nuevowebsite-alexendrosdev`](https://github.com/Iniciativas-Alexendros/nuevowebsite-alexendrosdev) (archivado, Next.js) |
+|                   |                                                                                                                           |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Repo canónico     | [`Iniciativas-Alexendros/miwebsite-alexendrosdev`](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev)     |
+| Proyecto Vercel   | **`alexendros-dev`** (Hobby, team `alexendros-team`)                                                                      |
+| Production branch | `main` → deploy automático                                                                                                |
+| Predecesor        | [`nuevowebsite-alexendrosdev`](https://github.com/Iniciativas-Alexendros/nuevowebsite-alexendrosdev) (archivado, Next.js) |
 
 ## Stack
 
