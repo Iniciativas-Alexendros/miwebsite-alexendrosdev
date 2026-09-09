@@ -21,11 +21,11 @@ MVP en **producción** en [https://alexendros.dev](https://alexendros.dev). Repo
 
 ## Pendiente operativo
 
-| Item                                                  | Issue / nota                                                                                               |
-| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Env SMTP + Upstash en Vercel                          | [#13](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/13)                         |
-| Migrar Node 22/24 antes de 2026-10-01                 | [#11](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/11)                         |
-| Majors Dependabot (zod 4, nodemailer 10, React/Astro) | [#12](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/12) — no mergear sin triage |
+| Item                                                  | Issue / nota                                                                                                  |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Env SMTP + Upstash en Vercel                          | [#13](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/13) + checklist smoke WP-3     |
+| Migrar Node 22.x                                      | [#11](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/11) — PR WP-6; validar Preview |
+| Majors Dependabot (zod 4, nodemailer 10, React/Astro) | [#12](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/12) — triage WP-7; un PR/major |
 
 ## Predecesor
 

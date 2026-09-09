@@ -47,6 +47,8 @@ updates:
         update-types: ['version-update:semver-major']
       - dependency-name: astro
         update-types: ['version-update:semver-major']
+      - dependency-name: '@astrojs/vercel'
+        update-types: ['version-update:semver-major']
 
   - package-ecosystem: github-actions
     directory: /
