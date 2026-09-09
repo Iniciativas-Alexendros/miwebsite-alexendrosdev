@@ -2,7 +2,9 @@ import { test, expect } from '@playwright/test';
 
 test('contact form validacion Zod y envio', async ({ page }) => {
   await page.route('**/api/contact', async (route) => {
-    if (route.request().method() === 'POST') {
+    const req = route.request();
+    if (req.method() === 'POST') {
+      expect(req.headers()['content-type'] ?? '').toMatch(/application\/json/i);
       await route.fulfill({
         status: 200,
         contentType: 'application/json',
@@ -10,7 +12,11 @@ test('contact form validacion Zod y envio', async ({ page }) => {
       });
       return;
     }
-    await route.continue();
+    await route.fulfill({
+      status: 405,
+      headers: { Allow: 'POST', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Method not allowed' })
+    });
   });
 
   await page.goto('/contacto');
