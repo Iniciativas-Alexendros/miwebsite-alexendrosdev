@@ -24,7 +24,7 @@ pnpm build && pnpm preview
 pnpm test:e2e
 ```
 
-`preview` sirve `.vercel/output/static` (el adapter Vercel no soporta `astro preview`). Node **20** (`engines.node` / `.nvmrc`).
+`preview` sirve `.vercel/output/static` (el adapter Vercel no soporta `astro preview`). Node **22** (`engines.node` / `.nvmrc`).
 
 ## CI
 

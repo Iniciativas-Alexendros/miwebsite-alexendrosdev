@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && node scripts/fix-vercel-runtime.mjs",
     "preview": "serve .vercel/output/static -l 4321 --no-clipboard",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
