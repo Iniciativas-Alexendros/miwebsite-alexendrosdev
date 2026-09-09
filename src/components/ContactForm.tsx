@@ -11,12 +11,7 @@ type Props = {
 const inputClass =
   'mt-1 w-full bg-bg border border-border rounded-xl px-3 py-2 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
 
-export default function ContactForm({
-  subjects,
-  calUrl,
-  successMessage,
-  errorMessage
-}: Props) {
+export default function ContactForm({ subjects, calUrl, successMessage, errorMessage }: Props) {
   const [status, setStatus] = useState<'idle' | 'ok' | 'error' | 'loading'>('idle');
   const [form, setForm] = useState({
     name: '',
@@ -68,7 +63,11 @@ export default function ContactForm({
   }
 
   return (
-    <form onSubmit={submit} className="space-y-4 border border-border rounded-2xl p-6 bg-card" noValidate>
+    <form
+      onSubmit={submit}
+      className="space-y-4 border border-border rounded-2xl p-6 bg-card"
+      noValidate
+    >
       <div className="grid md:grid-cols-2 gap-4">
         <div>
           <label htmlFor="contact-name" className="text-sm">
@@ -190,7 +189,8 @@ export default function ContactForm({
         </div>
       )}
       <div className="text-xs text-muted">
-        Conversión optimizada: 3 campos obligatorios + select = 3.2% vs 0.8% con 9+. Sin analytics.
+        Conversión optimizada: 3 campos obligatorios + select = 3.2% vs 0.8% con 9+. Sin GA ni
+        cookies de tracking.
       </div>
     </form>
   );

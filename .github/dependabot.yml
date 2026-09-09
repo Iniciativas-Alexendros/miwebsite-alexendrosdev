@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: weekly
       day: monday
-      time: "04:00"
+      time: '04:00'
       timezone: Europe/Madrid
     open-pull-requests-limit: 10
     labels:
@@ -25,20 +25,40 @@ updates:
           - minor
           - patch
     commit-message:
-      prefix: "build(deps)"
+      prefix: 'build(deps)'
       include: scope
+    # Majors diferidos post-MVP — ver issue #12
+    ignore:
+      - dependency-name: zod
+        update-types: ['version-update:semver-major']
+      - dependency-name: nodemailer
+        update-types: ['version-update:semver-major']
+      - dependency-name: react
+        update-types: ['version-update:semver-major']
+      - dependency-name: react-dom
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/react'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/react-dom'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@astrojs/react'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@astrojs/tailwind'
+        update-types: ['version-update:semver-major']
+      - dependency-name: astro
+        update-types: ['version-update:semver-major']
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
       day: monday
-      time: "04:00"
+      time: '04:00'
       timezone: Europe/Madrid
     open-pull-requests-limit: 5
     labels:
       - dependencies
       - github-actions
     commit-message:
-      prefix: "ci(deps)"
+      prefix: 'ci(deps)'
       include: scope

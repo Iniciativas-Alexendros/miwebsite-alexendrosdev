@@ -5,10 +5,7 @@ import vercel from '@astrojs/vercel/serverless';
 
 export default defineConfig({
   site: 'https://alexendros.dev',
-  integrations: [
-    tailwind({ applyBaseStyles: false }),
-    react()
-  ],
+  integrations: [tailwind({ applyBaseStyles: false }), react()],
   output: 'hybrid',
   adapter: vercel({
     maxDuration: 10

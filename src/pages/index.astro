@@ -7,18 +7,21 @@ import TestimonialStrip from '../components/TestimonialStrip.astro';
 import { services } from '../content/services';
 import { getFeaturedProjects } from '../content/projects';
 ---
+
 <Layout>
   <Hero />
   <section class="mx-auto max-w-6xl px-6 mt-14 cv-auto">
     <div class="flex justify-between items-end">
       <h2 class="text-2xl font-bold">Servicios con alcance cerrado</h2>
-      <a href="/servicios" class="text-sm text-muted hover:text-fg focus-ring rounded">Ver todo →</a>
+      <a href="/servicios" class="text-sm text-muted hover:text-fg focus-ring rounded">Ver todo →</a
+      >
     </div>
     <div class="mt-6 grid md:grid-cols-3 gap-6">
       {services.map((s) => <ServiceCard service={s} />)}
     </div>
     <div class="mt-6 border border-dashed border-border rounded-2xl p-4 text-sm text-muted">
-      <b>Transparencia que convierte:</b> cada servicio muestra qué incluye, qué NO incluye, tecnologías y desde cuánto. Reduce fricción y genera confianza (pricing transparente + testimonios = trust).
+      <b>Transparencia que convierte:</b> cada servicio muestra qué incluye, qué NO incluye, tecnologías
+      y desde cuánto. Reduce fricción y genera confianza (pricing transparente + testimonios = trust).
     </div>
   </section>
 
@@ -27,38 +30,64 @@ import { getFeaturedProjects } from '../content/projects';
   <section class="mx-auto max-w-6xl px-6 mt-16 cv-auto">
     <div class="flex justify-between items-end">
       <h2 class="text-2xl font-bold">Proyectos con métricas reales</h2>
-      <a href="/proyectos" class="text-sm text-muted hover:text-fg focus-ring rounded">Ver 4 proyectos →</a>
+      <a href="/proyectos" class="text-sm text-muted hover:text-fg focus-ring rounded"
+        >Ver 4 proyectos →</a
+      >
     </div>
-    <p class="text-sm text-muted mt-2">Profundidad &gt; cantidad. 70% reclutadores prefiere pocos proyectos completos con métricas de negocio.</p>
+    <p class="text-sm text-muted mt-2">
+      Profundidad &gt; cantidad. 70% reclutadores prefiere pocos proyectos completos con métricas de
+      negocio.
+    </p>
     <div class="mt-6 grid md:grid-cols-2 gap-6">
       {getFeaturedProjects().map((p) => <ProjectCard project={p} />)}
     </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-6 mt-16 border border-border rounded-2xl p-8 bg-card cv-auto">
+  <section
+    class="mx-auto max-w-6xl px-6 mt-16 border border-border rounded-2xl p-8 bg-card cv-auto"
+  >
     <h2 class="text-xl font-bold">¿Por qué esta web convierte más?</h2>
     <div class="mt-6 grid md:grid-cols-3 gap-6 text-sm">
       <div>
         <div class="font-mono text-primary">01 — Velocidad</div>
-        <p class="mt-2 text-muted">Astro con 0 JS en contenido, content-visibility below-fold, sharp, LCP objetivo &lt;1.65s. 1s vs 5s = 3× conversión.</p>
+        <p class="mt-2 text-muted">
+          Astro con 0 JS en contenido, content-visibility below-fold, sharp, LCP objetivo &lt;1.65s.
+          1s vs 5s = 3× conversión.
+        </p>
       </div>
       <div>
         <div class="font-mono text-primary">02 — Prueba</div>
-        <p class="mt-2 text-muted">Cada proyecto: contexto, reto, solución, resultados con %. axe-core 0 violaciones, Lighthouse ≥90 móvil en 6 rutas.</p>
+        <p class="mt-2 text-muted">
+          Cada proyecto: contexto, reto, solución, resultados con %. axe-core 0 violaciones,
+          Lighthouse ≥90 móvil en 6 rutas.
+        </p>
       </div>
       <div>
         <div class="font-mono text-primary">03 — Fricción mínima</div>
-        <p class="mt-2 text-muted">Formulario 3 campos = 3.2% conversión. Cal.com como alternativa. Sin cookies, sin GA, privacidad real por defecto.</p>
+        <p class="mt-2 text-muted">
+          Formulario 3 campos = 3.2% conversión. Cal.com como alternativa. Sin GA ni cookies de
+          tracking; métricas agregadas Vercel.
+        </p>
       </div>
     </div>
   </section>
 
   <section class="mx-auto max-w-6xl px-6 mt-12 text-center cv-auto">
     <h2 class="text-3xl font-bold">¿Encaja con lo que buscas?</h2>
-    <p class="text-muted mt-2">Respuesta directa, sin formularios opacos. Si no encajo, te lo digo en la primera conversación.</p>
+    <p class="text-muted mt-2">
+      Respuesta directa, sin formularios opacos. Si no encajo, te lo digo en la primera
+      conversación.
+    </p>
     <div class="mt-6 flex justify-center gap-3">
-      <a href="/contacto" class="bg-primary text-bg px-6 py-3 rounded-full font-medium focus-ring">Cuéntame tu proyecto →</a>
-      <a href="https://cal.com/alexendros" class="border border-border px-6 py-3 rounded-full focus-ring" target="_blank" rel="noopener noreferrer">Agendar 15min</a>
+      <a href="/contacto" class="bg-primary text-bg px-6 py-3 rounded-full font-medium focus-ring"
+        >Cuéntame tu proyecto →</a
+      >
+      <a
+        href="https://cal.com/alexendros"
+        class="border border-border px-6 py-3 rounded-full focus-ring"
+        target="_blank"
+        rel="noopener noreferrer">Agendar 15min</a
+      >
     </div>
   </section>
 </Layout>

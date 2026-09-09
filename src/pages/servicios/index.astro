@@ -4,10 +4,17 @@ import ServiceCard from '../../components/ServiceCard.astro';
 import TestimonialStrip from '../../components/TestimonialStrip.astro';
 import { services } from '../../content/services';
 ---
-<Layout title="Servicios — Alexendros" description="Tres líneas con alcance, entregables y exclusiones explícitas. Sin precios cerrados no confirmados.">
+
+<Layout
+  title="Servicios — Alexendros"
+  description="Tres líneas con alcance, entregables y exclusiones explícitas. Sin precios cerrados no confirmados."
+>
   <div class="mx-auto max-w-6xl px-6 pt-12">
     <h1 class="text-4xl font-bold">Tres líneas de trabajo con alcance cerrado</h1>
-    <p class="text-muted mt-3 max-w-2xl">Sin precios, plazos ni garantías no confirmados. Cada servicio: problemas que resuelve, alcance, entregables, proceso, tecnologías y exclusiones. Transparencia que reduce objeciones.</p>
+    <p class="text-muted mt-3 max-w-2xl">
+      Sin precios, plazos ni garantías no confirmados. Cada servicio: problemas que resuelve,
+      alcance, entregables, proceso, tecnologías y exclusiones. Transparencia que reduce objeciones.
+    </p>
     <div class="mt-8 grid md:grid-cols-3 gap-6">
       {services.map((s) => <ServiceCard service={s} />)}
     </div>

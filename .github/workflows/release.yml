@@ -3,13 +3,13 @@ name: Release
 
 on:
   workflow_run:
-    workflows: ["CI — typecheck + build + a11y + lhci"]
+    workflows: ['CI — typecheck + build + a11y + lhci']
     types: [completed]
     branches: [main]
   workflow_dispatch:
     inputs:
       bump:
-        description: "Bump semver en package.json (none = usar versión actual)"
+        description: 'Bump semver en package.json (none = usar versión actual)'
         required: true
         type: choice
         options: [none, patch, minor, major]
@@ -35,7 +35,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v7
         with:
-          node-version-file: ".nvmrc"
+          node-version-file: '.nvmrc'
 
       - name: Bump version (manual)
         if: github.event_name == 'workflow_dispatch' && inputs.bump != 'none'

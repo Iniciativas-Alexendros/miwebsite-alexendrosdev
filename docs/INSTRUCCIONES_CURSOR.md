@@ -11,6 +11,7 @@
 9. DONE: build verde, 0 TS errors, Lighthouse >=90 movil 4 cats, axe-core 0 violaciones 6 rutas, LCP <1.65s, form envia a Proton SMTP, OG 1200x630 existe
 
 Reglas no negociables:
+
 - No Google Fonts, no CMS externo, no cambiar pricing sin confirmar
 - Solo ContactForm.tsx es cliente, resto Server Components Astro
 - Colores OKLCH, focus-visible rings, teclado+screen reader
