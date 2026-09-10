@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const steps = [
+  {
+    title: 'Entendemos el punto de partida',
+    desc: 'Hablamos de tu negocio, tus clientes y lo que necesitas conseguir.'
+  },
+  {
+    title: 'Definimos una propuesta clara',
+    desc: 'Acordamos alcance, prioridades, entregables y presupuesto antes de empezar.'
+  },
+  {
+    title: 'Diseñamos y construimos',
+    desc: 'Te enseño avances para validar el enfoque antes de llegar al final.'
+  },
+  {
+    title: 'Revisamos antes de publicar',
+    desc: 'Compruebo que el sitio sea claro, usable y funcione bien en los dispositivos habituales.'
+  },
+  {
+    title: 'Publicamos y te entrego lo necesario',
+    desc: 'La web queda lista para usar, con una guía para los puntos que necesites gestionar.'
+  }
+];
+
+const transparency = [
+  'Qué incluye el proyecto',
+  'Qué no incluye',
+  'Qué necesito por tu parte',
+  'Cuándo validamos cada fase',
+  'Qué recibirás al terminar'
+];
+---
+
+<Layout
+  title="Cómo trabajo — Alexendros"
+  description="Un proceso claro por fases: desde entender tu negocio hasta publicar y entregarte lo necesario."
+>
+  <div class="mx-auto max-w-4xl px-6 pt-12 pb-16">
+    <h1 class="text-4xl font-bold">
+      Un proceso claro para que sepas qué va a pasar en cada fase.
+    </h1>
+    <p class="mt-4 text-muted max-w-2xl">
+      Sin sorpresas de alcance. Antes de empezar acordamos qué se hace, qué no se hace y cómo
+      validamos cada entrega.
+    </p>
+
+    <ol class="mt-10 space-y-4">
+      {
+        steps.map((step, i) => (
+          <li class="border border-border rounded-2xl p-5 bg-card">
+            <div class="text-xs text-primary font-medium">Paso {i + 1}</div>
+            <h2 class="font-bold mt-1">{step.title}</h2>
+            <p class="text-sm text-muted mt-2">{step.desc}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold">Lo que siempre tendrás claro</h2>
+      <ul class="mt-4 list-disc pl-5 text-sm text-muted space-y-2">
+        {transparency.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+
+    <details class="mt-10 border border-border rounded-2xl p-5 bg-card">
+      <summary class="font-bold cursor-pointer focus-ring rounded">
+        ¿Cómo compruebo la calidad antes de publicar?
+      </summary>
+      <p class="mt-3 text-sm text-muted">
+        Reviso velocidad, accesibilidad, seguridad básica y funcionamiento de formularios. También
+        realizo pruebas automáticas antes de cada entrega.
+      </p>
+    </details>
+
+    <div class="mt-10">
+      <a
+        href="/contacto"
+        class="inline-block bg-primary text-bg px-6 py-3 rounded-full font-medium focus-ring"
+        >Cuéntame qué necesitas</a
+      >
+    </div>
+  </div>
+</Layout>

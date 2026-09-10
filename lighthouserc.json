@@ -10,6 +10,7 @@
         "http://127.0.0.1:4321/servicios/produccion-sitios-web/",
         "http://127.0.0.1:4321/proyectos/",
         "http://127.0.0.1:4321/proyectos/front-valencia/",
+        "http://127.0.0.1:4321/como-trabajo/",
         "http://127.0.0.1:4321/contacto/"
       ],
       "settings": {

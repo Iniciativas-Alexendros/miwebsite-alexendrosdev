@@ -7,6 +7,7 @@ const routes = [
   '/servicios/produccion-sitios-web',
   '/proyectos',
   '/proyectos/front-valencia',
+  '/como-trabajo',
   '/contacto'
 ];
 
