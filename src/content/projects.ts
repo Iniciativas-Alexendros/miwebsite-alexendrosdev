@@ -59,7 +59,7 @@ export const projects: Project[] = [
       'Usable con teclado',
       'Velocidad medida antes de entregar'
     ],
-    results: ['Carga mucho más rápida', '+40% reservas', 'Menú editable en minutos'],
+    results: ['Carga mucho más rápida', 'Más reservas desde la web', 'Menú editable en minutos'],
     links: { prod: 'https://example.com', github: 'https://github.com' },
     published: '2024-03-15',
     featured: true,
@@ -96,7 +96,7 @@ export const projects: Project[] = [
       'Pagos preparados para evitar cobros duplicados',
       'Sin depender de un CMS externo'
     ],
-    results: ['Venta 48h → 5 min', '+300% pedidos', 'Menos tiempo de gestión'],
+    results: ['Presupuesto en minutos', 'Pedidos sin gestión manual', 'Menos tiempo de gestión'],
     links: { prod: 'https://example.com', github: 'https://github.com' },
     published: '2023-11-20',
     featured: true,
