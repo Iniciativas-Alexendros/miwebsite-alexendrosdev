@@ -41,7 +41,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.10.0",
     "@eslint/js": "^10.0.1",
-    "@lhci/cli": "^0.14.0",
+    "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.48.0",
     "@semantic-release/changelog": "^7.0.0",
     "@semantic-release/commit-analyzer": "^13.0.1",
