@@ -1,102 +1,41 @@
-# Tag + GitHub Release. No despliega a Vercel (versionado ≠ promoción).
+# Tag + GitHub Release vía semantic-release. No despliega a Vercel (versionado ≠ promoción).
 name: Release
 
 on:
-  workflow_run:
-    workflows: ['CI — typecheck + lint + format + vitest + build + a11y + lhci']
-    types: [completed]
+  push:
     branches: [main]
   workflow_dispatch:
-    inputs:
-      bump:
-        description: 'Bump semver en package.json (none = usar versión actual)'
-        required: true
-        type: choice
-        options: [none, patch, minor, major]
-        default: none
 
 permissions:
   contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: release-main
+  cancel-in-progress: false
 
 jobs:
   release:
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
 
-      - name: Setup Node
-        uses: actions/setup-node@v7
+      - uses: pnpm/action-setup@v6
         with:
-          node-version-file: '.nvmrc'
+          version: 9
 
-      - name: Bump version (manual)
-        if: github.event_name == 'workflow_dispatch' && inputs.bump != 'none'
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Semantic Release
+        run: pnpm exec semantic-release
         env:
-          BUMP: ${{ inputs.bump }}
-        run: |
-          set -euo pipefail
-          node <<'EOF'
-          const fs = require('fs');
-          const bump = process.env.BUMP;
-          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-          const [maj, min, pat] = pkg.version.split('.').map(Number);
-          let next;
-          if (bump === 'major') next = `${maj + 1}.0.0`;
-          else if (bump === 'minor') next = `${maj}.${min + 1}.0`;
-          else next = `${maj}.${min}.${pat + 1}`;
-          pkg.version = next;
-          fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
-          console.log(`package.json → ${next}`);
-          EOF
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package.json
-          git commit -m "chore(release): bump a v$(node -p "require('./package.json').version")"
-          git push origin HEAD:main
-
-      - name: Resolver versión y tag
-        id: ver
-        run: |
-          set -euo pipefail
-          VERSION="$(node -p "require('./package.json').version")"
-          TAG="v${VERSION}"
-          if git rev-parse "$TAG" >/dev/null 2>&1; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "::notice::El tag ${TAG} ya existe — no se crea release."
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-            echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
-            echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Crear tag anotado
-        if: steps.ver.outputs.skip != 'true'
-        env:
-          TAG: ${{ steps.ver.outputs.tag }}
-          VERSION: ${{ steps.ver.outputs.version }}
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag -a "$TAG" -m "Release ${TAG}"
-          git push origin "$TAG"
-
-      - name: Publicar GitHub Release
-        if: steps.ver.outputs.skip != 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: ${{ steps.ver.outputs.tag }}
-        run: |
-          set -euo pipefail
-          gh release create "$TAG" \
-            --title "$TAG" \
-            --generate-notes \
-            --notes "Versionado ≠ promoción: este release **no** despliega a Vercel."
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

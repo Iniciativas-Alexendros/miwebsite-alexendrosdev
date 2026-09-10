@@ -31,6 +31,10 @@ MVP en **producción** en [https://alexendros.dev](https://alexendros.dev). Repo
 
 El sitio Next.js en `nuevowebsite-alexendrosdev` está **archivado**. No hay redirecciones legacy de rutas; lanzamiento limpio sobre este stack Astro.
 
+## Releases
+
+Automáticas con **semantic-release** al push a `main` (workflow `release.yml`). SemVer: `content`/`docs`/`chore`/`style`/`refactor` → patch; `feat` → minor; breaking → major. Genera `CHANGELOG.md`, tag `v*.*.*` y GitHub Release. El commit `chore(release)` lleva `[skip ci]`. **Versionado ≠ promoción** a Vercel.
+
 ## Criterios de mantenimiento
 
 No tocar pricing sin confirmar; no añadir CMS ni Google Fonts; no ampliar alcance de servicios sin decisión explícita. Commits y PRs en español; ramas `cursor/…` + PR borrador desde `main`.

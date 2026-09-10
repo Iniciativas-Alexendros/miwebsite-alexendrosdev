@@ -5,7 +5,7 @@
 - Sin GA ni cookies de tracking; sí Vercel Analytics y Speed Insights (agregados, sin cookies).
 - No tocar pricing sin confirmar; no añadir CMS ni Google Fonts; no cambiar el alcance de los servicios.
 - Preferir repo público + Vercel Hobby para preview por PR (decisión 1B); relajar Deployment Protection/SSO de previews para URLs compartibles (decisión 2A).
-- Versionado (tags/release.yml) distinto de promote a producción.
+- Versionado (semantic-release / release.yml) distinto de promote a producción; content=patch, feat=minor, breaking=major.
 - Al trabajar desde `main`, abrir rama `cursor/…`, commit/push y PR en borrador (no push directo a default).
 
 ## Learned Workspace Facts

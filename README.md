@@ -34,7 +34,7 @@ GitHub Actions: typecheck → lint → format:check → vitest → build → Pla
 
 - **Hobby + repo público** → preview automático por PR (`*.vercel.app`). Previews sin SSO (decisión 2A; URLs compartibles).
 - **Promote = merge a `main`** con CI verde. No desplegar a Production desde ramas de feature ni “Promote” ad-hoc sin revisión.
-- El workflow `release.yml` solo crea tags/releases GitHub; **versionado ≠ deploy** a Vercel.
+- **Releases automáticas** con [semantic-release](https://semantic-release.gitbook.io/) en cada push a `main` (`release.yml`): SemVer; `content`/`docs`/`chore`/`style`/`refactor` → patch, `feat` → minor, breaking → major; changelog en español por secciones. **Versionado ≠ deploy** a Vercel.
 - Dominio apex `alexendros.dev` (+ redirect `www` → apex) en el proyecto `alexendros-dev`.
 - Checklist merge: typecheck, lint, format, vitest, build, e2e/axe, LHCI ≥90 móvil en el PR antes de fusionar.
 
