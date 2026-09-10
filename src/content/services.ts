@@ -41,8 +41,7 @@ export const services: Service[] = [
       'Estructura de páginas y textos principales',
       'Diseño adaptado a móvil, tablet y ordenador',
       'Formulario de contacto o pagos cuando el proyecto lo necesita',
-      'Publicación de la web y guía básica de uso',
-      'Revisión antes de entregar'
+      'Publicación, revisión y guía básica de uso'
     ],
     deliverables: [
       'Una web lista para presentar tu negocio',

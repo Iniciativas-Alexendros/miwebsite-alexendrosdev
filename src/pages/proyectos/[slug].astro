@@ -24,14 +24,11 @@ const { project } = Astro.props;
       class="mt-6 w-full rounded-2xl border border-border"
       loading="eager"
     />
-    <div class="mt-4 flex flex-wrap gap-2">
-      {
-        project.results.map((r) => (
-          <span class="text-xs bg-primary/10 text-primary border border-primary/20 rounded-full px-3 py-1">
-            {r}
-          </span>
-        ))
-      }
+    <div class="mt-4">
+      <h2 class="font-bold text-sm">Resultados</h2>
+      <ul class="mt-2 list-disc pl-5 text-sm text-muted space-y-1">
+        {project.results.map((r) => <li>{r}</li>)}
+      </ul>
     </div>
 
     <div class="mt-10 grid md:grid-cols-[1.2fr_0.8fr] gap-10">

@@ -2,15 +2,33 @@
 import { site } from '../content/site';
 ---
 
-<footer class="border-t border-border mt-20 cv-auto">
-  <div class="mx-auto max-w-6xl px-6 py-10 grid md:grid-cols-3 gap-8 text-sm">
+<footer class="border-t border-border mt-0 cv-auto">
+  <div class="mx-auto max-w-6xl px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 text-sm">
     <div>
       <div class="font-mono font-bold">Alexendros<span class="text-primary">.dev</span></div>
       <p class="text-muted mt-2 max-w-xs">
         Webs claras y útiles para profesionales y pequeños negocios. Valencia — remoto.
       </p>
+      <div class="mt-4 text-muted">
+        <a href={site.social.email} class="hover:text-fg focus-ring rounded">hola@alexendros.dev</a>
+        <div class="mt-2 flex gap-3">
+          <a
+            href={site.social.github}
+            class="hover:text-fg focus-ring rounded"
+            target="_blank"
+            rel="noopener noreferrer">GitHub</a
+          >
+          <a
+            href={site.social.linkedin}
+            class="hover:text-fg focus-ring rounded"
+            target="_blank"
+            rel="noopener noreferrer">LinkedIn</a
+          >
+        </div>
+        <div class="mt-4 text-xs">Sin cookies de seguimiento. Privacidad respetada.</div>
+      </div>
     </div>
-    <div class="flex gap-6">
+    <div class="flex gap-10">
       <div>
         <div class="font-medium mb-2">Navegación</div>
         <ul class="space-y-1 text-muted">
@@ -23,6 +41,9 @@ import { site } from '../content/site';
               </li>
             ))
           }
+          <li>
+            <a href="/contacto" class="hover:text-fg focus-ring rounded">Contacto</a>
+          </li>
         </ul>
       </div>
       <div>
@@ -39,24 +60,6 @@ import { site } from '../content/site';
           }
         </ul>
       </div>
-    </div>
-    <div class="text-muted">
-      <a href={site.social.email} class="hover:text-fg focus-ring rounded">hola@alexendros.dev</a>
-      <div class="mt-2 flex gap-3">
-        <a
-          href={site.social.github}
-          class="hover:text-fg focus-ring rounded"
-          target="_blank"
-          rel="noopener noreferrer">GitHub</a
-        >
-        <a
-          href={site.social.linkedin}
-          class="hover:text-fg focus-ring rounded"
-          target="_blank"
-          rel="noopener noreferrer">LinkedIn</a
-        >
-      </div>
-      <div class="mt-4 text-xs">Sin cookies de seguimiento. Privacidad respetada.</div>
     </div>
   </div>
 </footer>
