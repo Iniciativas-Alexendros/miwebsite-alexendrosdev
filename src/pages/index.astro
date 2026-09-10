@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import TestimonialStrip from '../components/TestimonialStrip.astro';
 import { services } from '../content/services';
 import { getFeaturedProjects } from '../content/projects';
 
@@ -27,8 +26,6 @@ const featured = getFeaturedProjects().slice(0, 3);
       {services.map((s) => <ServiceCard service={s} />)}
     </div>
   </section>
-
-  <TestimonialStrip />
 
   <section class="mx-auto max-w-6xl px-6 mt-16 cv-auto">
     <div class="flex justify-between items-end gap-4">

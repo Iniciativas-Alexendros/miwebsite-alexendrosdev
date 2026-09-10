@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
-import TestimonialStrip from '../../components/TestimonialStrip.astro';
 import { services } from '../../content/services';
 ---
 
@@ -19,5 +18,4 @@ import { services } from '../../content/services';
       {services.map((s) => <ServiceCard service={s} />)}
     </div>
   </div>
-  <TestimonialStrip />
 </Layout>
