@@ -23,149 +23,148 @@ export type Service = z.infer<typeof serviceSchema>;
 export const services: Service[] = [
   {
     slug: 'produccion-sitios-web',
-    title: 'Producción de sitios web',
+    title: 'Web nueva o renovación',
     short:
-      'Diseño, desarrollo y publicación de webs y productos digitales que convierten: accesibles, rápidas (<1.65s) y mantenibles.',
+      'Una web clara, rápida y fácil de usar para explicar tu negocio y facilitar que te contacten.',
     description:
-      'Ciclo completo análisis → deploy. Next.js/Astro, TS estricto, Tailwind OKLCH, CI gates. Con pasarelas de pago y formularios que no se rompen.',
+      'Si tu web actual se ha quedado antigua, carga mal o no explica bien lo que haces, creo una nueva o mejoro la que ya tienes. Trabajamos el mensaje, la estructura y el diseño para que tus clientes entiendan tu propuesta y sepan cómo contactar o comprar.',
     audience:
-      'Empresas, fundadores, equipos marketing/producto que necesitan pasar de WP lento a web que vende.',
+      'Profesionales que necesitan una primera web seria · Negocios locales con una web antigua · Empresas de servicios que reciben pocas consultas',
     problems: [
-      'WP lento/inaccesible LCP >4s',
-      'Landings genéricas que no convierten',
-      'Formularios rotos 78% abandono',
-      'SEO pobre',
-      'Alto coste mantenimiento'
+      'Tu web no explica bien lo que haces',
+      'Carga lenta o se ve mal en el móvil',
+      'Recibes pocas consultas o solicitudes',
+      'Es difícil de actualizar o mantener'
     ],
     scope: [
-      'Análisis negocio y conversión',
-      'IA arquitectura',
-      'UX que convierte',
-      'Dev Next.js/Astro + Stripe/PayPal',
-      'Responsive, a11y WCAG AA, SEO técnico',
-      'Formularios Zod 3 campos',
-      'Tests Vitest + Playwright',
-      'Deploy Vercel',
-      'Docs y formación',
-      '30 días soporte'
+      'Reunión inicial para entender el negocio y los objetivos',
+      'Estructura de páginas y textos principales',
+      'Diseño adaptado a móvil, tablet y ordenador',
+      'Formulario de contacto o pagos cuando el proyecto lo necesita',
+      'Publicación de la web y guía básica de uso',
+      'Revisión antes de entregar'
     ],
     deliverables: [
-      'App funcional + CI verde',
-      'Repo Git privado',
-      'Informe Lighthouse + axe-core 0 violaciones',
-      'Guía contenidos y pagos'
+      'Una web lista para presentar tu negocio',
+      'Textos y estructura más claros',
+      'Guía para gestionar lo acordado'
     ],
     process: [
-      'Kickoff 45min',
-      'Arquitectura y precios',
-      'Implementación con PR reviews',
-      'Lanzamiento',
-      'Entrega + soporte'
+      'Reunión inicial y definición de alcance',
+      'Estructura y contenidos',
+      'Diseño y construcción con avances para validar',
+      'Revisión y publicación',
+      'Entrega de guía y soporte inicial'
     ],
     technologies: [
-      'next-js',
-      'astro',
-      'typescript',
-      'tailwind',
-      'stripe',
-      'zod',
-      'vitest',
-      'playwright'
+      'Stack habitual: Next.js o Astro, TypeScript estricto, Tailwind. Entrega con repositorio privado, CI en verde, informe Lighthouse y 0 violaciones axe-core.'
     ],
-    exclusions: ['Sin CMS gestionado', 'Sin migración WP compleja', 'Sin diseño de marca'],
-    pricingFrom: 'Desde 1.500€',
-    timeline: '1-4 semanas',
+    exclusions: [
+      'No incluye tienda online completa ni mantenimiento continuo (disponible como servicio aparte).'
+    ],
+    pricingFrom: 'Desde 1.500 €',
+    timeline: '1–4 semanas según alcance',
     cta: '/contacto',
     metrics: [
-      { label: 'Mejora LCP', value: '-65%' },
-      { label: 'Conversión form', value: '3.2%' }
+      { label: 'Enfoque', value: 'Clientes' },
+      { label: 'Entrega', value: 'Lista para usar' }
     ]
   },
   {
     slug: 'auditorias',
-    title: 'Auditorías técnicas',
+    title: 'Revisión y plan de mejora de tu web',
     short:
-      'Diagnóstico rendimiento, accesibilidad, SEO y seguridad con plan priorizado. Lighthouse CI + axe-core + manual.',
+      'Descubre qué está frenando tu web y qué conviene mejorar primero, con un plan claro y ordenado.',
     description:
-      'Herramientas automatizadas + revisión experta. Informe navegable con priorización ICE y plan remediación.',
-    audience: 'CTOs, tech leads, agencias que necesitan saber estado real antes de invertir.',
+      'Reviso tu web para detectar problemas que pueden hacerte perder visitas, confianza o contactos. Recibes un informe claro, priorizado por impacto, para saber qué mejorar ahora, qué puede esperar y qué inversión requiere cada paso.',
+    audience: 'Dueños de negocio y equipos que quieren saber qué mejorar antes de invertir más.',
     problems: [
-      'Estado real desconocido',
-      'Backlog inflado',
-      'Auditorías genéricas',
-      'Riesgo legal WCAG'
+      '¿Tu web carga lenta, recibe pocas consultas o parece difícil de usar?',
+      'No sabes por dónde empezar a mejorar',
+      'Has recibido propuestas técnicas difíciles de priorizar',
+      'Quieres un plan claro antes de gastar en cambios'
     ],
     scope: [
-      'Perf LCP/CLS/INP',
-      'a11y axe-core + teclado/NVDA',
-      'SEO técnico',
-      'Calidad/mantenibilidad',
-      'Seguridad proporcional',
-      'Priorización',
-      'Plan remediación',
-      'Sesión lectura 1h'
+      'Velocidad y experiencia en móvil',
+      'Claridad de contenidos y facilidad para contactar',
+      'Visibilidad básica en buscadores',
+      'Accesibilidad, mantenimiento y seguridad básica'
     ],
     deliverables: [
-      'Informe navegable',
-      'Hoja priorización ICE',
-      'Scripts reproducción',
-      'Sesión 1h'
+      'Informe claro con problemas encontrados',
+      'Lista de mejoras ordenada por prioridad',
+      'Explicación del impacto de cada mejora',
+      'Reunión de 1 hora para revisar el informe'
     ],
     process: [
-      'Alcance',
-      'Ejecución auto',
-      'Revisión manual',
-      'Análisis',
-      'Entrega',
-      'Seguimiento opcional'
+      'Definimos el alcance de la revisión',
+      'Analizo tu web',
+      'Priorizo hallazgos por impacto',
+      'Te entrego el informe',
+      'Revisamos juntos en una reunión de 1 hora'
     ],
-    technologies: ['lighthouse-ci', 'axe-core', 'pa11y', 'typescript'],
-    exclusions: ['Sin implementación', 'Sin pentest', 'Sin certificación oficial WCAG'],
-    pricingFrom: 'Desde 650€',
-    timeline: '3-5 días',
+    technologies: [
+      'Para equipos técnicos: análisis CWV (LCP, CLS, INP), axe-core + revisión manual teclado/lector de pantalla, SEO técnico, seguridad proporcional, priorización ICE y scripts de reproducción.'
+    ],
+    exclusions: [
+      'No incluye implementación de las mejoras',
+      'No incluye pruebas de seguridad avanzadas',
+      'No incluye certificación oficial de accesibilidad'
+    ],
+    pricingFrom: 'Desde 650 €',
+    timeline: '3–5 días',
     cta: '/contacto',
     metrics: [
-      { label: 'Lighthouse', value: '≥90 móvil' },
-      { label: 'a11y', value: '0 violaciones' }
+      { label: 'Entrega', value: 'Informe claro' },
+      { label: 'Reunión', value: '1 hora' }
     ]
   },
   {
     slug: 'consultoria-tecnologica',
-    title: 'Consultoría tecnológica',
+    title: 'Plan digital y automatización',
     short:
-      'Diagnóstico, arquitectura y plan antes de construir. Automatización, IA aplicada sin hype, integraciones.',
+      'Antes de invertir en una nueva herramienta o desarrollo, definimos qué necesitas y cuál es el camino más sensato.',
     description:
-      'Evaluar alternativas, definir prioridades, entregar arquitectura objetivo con ADRs y plan faseado.',
-    audience: 'PYMEs sin equipo técnico, equipos eng/product',
+      'Te ayudo a ordenar una idea, elegir entre opciones y preparar un plan de trabajo por fases. Es útil cuando necesitas mejorar procesos, conectar herramientas, reducir tareas repetitivas o decidir si merece la pena crear una solución a medida.',
+    audience: 'Negocios y equipos que necesitan ordenar su plan digital antes de invertir.',
     problems: [
-      'Stack por hype',
-      'Procesos manuales',
-      'IA sin control',
-      'Deuda técnica no cuantificada'
+      'Hay demasiadas opciones y no sabes cuál encaja',
+      'Procesos manuales que consumen tiempo',
+      'Herramientas desconectadas entre sí',
+      'Dudas entre comprar una herramienta o construir a medida'
     ],
     scope: [
-      'Diagnóstico',
-      'Arquitectura objetivo',
-      'Evaluación alternativas',
-      'Prioridades',
-      'Plan faseado',
-      'ADRs/diagramas/runbooks'
+      'Reducir tareas manuales repetitivas',
+      'Conectar un formulario con tu correo, CRM o agenda',
+      'Ordenar información repartida en varias herramientas',
+      'Decidir entre herramienta existente o desarrollo a medida'
     ],
     deliverables: [
-      'Doc diagnóstico',
-      'Arquitectura + ADRs',
-      'Plan implementación',
-      'Sesión transferencia'
+      'Documento de diagnóstico',
+      'Comparativa de opciones',
+      'Plan por fases con prioridades'
     ],
-    process: ['Discovery', 'Diagnóstico', 'Evaluación', 'Diseño/plan', 'Entrega'],
-    technologies: ['typescript', 'node-js', 'rust', 'mcp', 'ollama', 'zod'],
-    exclusions: ['Sin implementación', 'Sin infra', 'Sin fine-tuning modelos'],
-    pricingFrom: 'Desde 900€',
-    timeline: '1-2 semanas',
+    process: [
+      'Conversación de descubrimiento',
+      'Diagnóstico de la situación actual',
+      'Comparativa de opciones',
+      'Plan por fases',
+      'Entrega y sesión de transferencia'
+    ],
+    technologies: [
+      'Evaluación de arquitectura, ADRs y runbooks cuando el proyecto lo requiere. Stack de referencia: TypeScript, Node, Rust, Go, integraciones MCP/Ollama.'
+    ],
+    exclusions: [
+      'No incluye la implementación del plan',
+      'No incluye infraestructura ni alojamiento',
+      'No incluye entrenamiento avanzado de modelos de IA'
+    ],
+    pricingFrom: 'Desde 900 €',
+    timeline: '1–2 semanas',
     cta: '/contacto',
     metrics: [
-      { label: 'Decisiones', value: 'Con ADRs' },
-      { label: 'Stack', value: 'Sin hype' }
+      { label: 'Resultado', value: 'Plan claro' },
+      { label: 'Enfoque', value: 'Por fases' }
     ]
   }
 ];

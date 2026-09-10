@@ -13,7 +13,7 @@ const { service } = Astro.props;
     <h2 class="font-bold text-lg leading-tight group-hover:text-primary transition">
       {service.title}
     </h2>
-    <span class="text-xs font-mono border border-border rounded-full px-2 py-1 shrink-0"
+    <span class="text-xs border border-border rounded-full px-2 py-1 shrink-0"
       >{service.pricingFrom}</span
     >
   </div>
@@ -21,14 +21,12 @@ const { service } = Astro.props;
   <div class="mt-4 flex gap-2 flex-wrap">
     {
       service.metrics.map((m) => (
-        <span class="text-xs font-mono bg-bg border border-border rounded-full px-2 py-1">
+        <span class="text-xs bg-bg border border-border rounded-full px-2 py-1">
           {m.label}: <b>{m.value}</b>
         </span>
       ))
     }
   </div>
-  <div class="mt-4 text-xs text-muted">
-    ⏱ {service.timeline} · {service.deliverables.length} entregables
-  </div>
-  <div class="mt-auto pt-4 text-sm font-medium">Ver alcance, proceso y exclusiones →</div>
+  <div class="mt-4 text-xs text-muted">{service.timeline}</div>
+  <div class="mt-auto pt-4 text-sm font-medium">Ver qué incluye →</div>
 </a>
