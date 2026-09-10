@@ -1,6 +1,5 @@
 ---
-import { profile } from '../content/profile';
-import { site } from '../content/site';
+
 ---
 
 <section
@@ -14,58 +13,45 @@ import { site } from '../content/site';
       para nuevos proyectos · Respuesta &lt;24h
     </div>
     <h1 class="mt-6 text-4xl md:text-5xl font-bold leading-[1.05] tracking-tight">
-      Construyo webs y apps <span class="text-primary">que convierten</span> y escalan.<br />Audito
-      lo que ya tienes. Decido contigo qué construir.
+      Tu web debería ayudarte a conseguir clientes, no darte más trabajo.
     </h1>
-    <p class="mt-4 text-lg text-muted max-w-2xl">{profile.summary}</p>
+    <p class="mt-4 text-lg text-muted max-w-2xl">
+      Diseño, creo y mejoro sitios web para profesionales y pequeños negocios que necesitan explicar
+      mejor lo que hacen, generar confianza y recibir más contactos.
+    </p>
     <div class="mt-6 flex flex-wrap gap-3">
       <a href="/contacto" class="bg-primary text-bg px-6 py-3 rounded-full font-medium focus-ring"
-        >¿Hablamos de tu proyecto? →</a
+        >Cuéntame qué necesitas</a
       >
       <a
-        href="/proyectos"
+        href="/servicios"
         class="border border-border px-6 py-3 rounded-full hover:border-fg/30 transition focus-ring"
-        >Ver proyectos con métricas</a
+        >Ver cómo puedo ayudarte</a
       >
     </div>
-    <div class="mt-8 grid grid-cols-3 gap-4 max-w-lg">
-      {
-        profile.proofs.map((p) => (
-          <div class="border border-border rounded-xl p-3">
-            <div class="text-xs text-muted">{p.label}</div>
-            <div class="font-mono text-xl font-bold">{p.value}</div>
-          </div>
-        ))
-      }
-    </div>
   </div>
-  <div class="border border-border rounded-2xl overflow-hidden bg-card terminal-glow">
-    <div
-      class="h-8 border-b border-border flex items-center px-4 gap-2 text-xs font-mono text-muted"
-    >
-      <span class="w-3 h-3 rounded-full bg-red-400/80" aria-hidden="true"></span>
-      <span class="w-3 h-3 rounded-full bg-yellow-400/80" aria-hidden="true"></span>
-      <span class="w-3 h-3 rounded-full bg-green-400/80" aria-hidden="true"></span>
-      pnpm ci && pnpm build
-    </div>
-    <pre
-      class="p-4 text-[12px] leading-6 font-mono overflow-auto"><code>✓ Typecheck, lint y tests en verde
-✓ axe-core: 0 violaciones en 6 rutas
-✓ Lighthouse: 98 / 100 / 100 / 100 móvil
-✓ Stripe webhooks idempotentes
-▶ {site.url}
-<span class="text-primary">✔ Deploy Vercel — 1.4s LCP</span></code></pre>
-    <div class="px-4 pb-4 flex flex-wrap gap-2 text-[10px] font-mono">
-      {
-        profile.stackPills.map((t) => (
-          <span class="border border-border rounded-full px-2 py-1 text-muted">{t}</span>
-        ))
-      }
-    </div>
+  <div class="border border-border rounded-2xl overflow-hidden bg-card p-6 space-y-4">
+    <p class="text-sm text-muted">Lo que puedes esperar:</p>
+    <ul class="space-y-3 text-sm">
+      <li class="flex gap-3">
+        <span class="text-primary shrink-0" aria-hidden="true">✓</span>
+        <span>Lenguaje claro y diseño pensado para tus clientes.</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="text-primary shrink-0" aria-hidden="true">✓</span>
+        <span>Web rápida y fácil de usar en móvil.</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="text-primary shrink-0" aria-hidden="true">✓</span>
+        <span>Proceso definido, presupuesto y entregables claros.</span>
+      </li>
+    </ul>
   </div>
 </section>
 <section class="border-y border-border bg-card/50">
-  <div class="mx-auto max-w-6xl px-6 py-3 flex flex-wrap gap-6 text-xs font-mono text-muted">
-    {profile.trustBar.map((item) => <span>✓ {item}</span>)}
+  <div class="mx-auto max-w-6xl px-6 py-3 flex flex-wrap gap-6 text-xs text-muted">
+    <span>✓ Alcance y precio acordados antes de empezar</span>
+    <span>✓ Entregas revisadas antes de publicar</span>
+    <span>✓ Comunicación directa, sin intermediarios</span>
   </div>
 </section>
