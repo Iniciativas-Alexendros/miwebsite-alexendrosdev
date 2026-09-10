@@ -3,7 +3,7 @@ export const contact = {
     { id: 'form', label: 'Enviar mensaje', href: '/contacto', priority: 1 },
     {
       id: 'cal',
-      label: 'Agendar llamada',
+      label: '¿Prefieres hablar? Agenda 15 minutos →',
       href: 'https://cal.com/alexendros',
       priority: 2,
       external: true

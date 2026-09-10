@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
-import TestimonialStrip from '../../components/TestimonialStrip.astro';
 import { services } from '../../content/services';
 ---
 
@@ -9,15 +8,14 @@ import { services } from '../../content/services';
   title="Cómo puedo ayudarte — Alexendros"
   description="Web nueva o renovación, revisión y plan de mejora, y plan digital con automatización. Alcance, plazos y precios desde claros."
 >
-  <div class="mx-auto max-w-6xl px-6 pt-12">
-    <h1 class="text-4xl font-bold">Cómo puedo ayudarte</h1>
+  <div class="mx-auto max-w-6xl px-6 py-16 md:py-24">
+    <h1 class="text-4xl font-bold max-w-3xl">Cómo puedo ayudarte</h1>
     <p class="text-muted mt-3 max-w-2xl">
-      Tres formas de trabajar juntas: una web nueva o renovada, una revisión con plan de mejora, o
-      un plan digital antes de invertir. En cada una verás qué incluye, qué no y desde cuánto.
+      Tres formas de trabajar: web nueva o renovada, revisión con plan, o plan digital antes de
+      invertir.
     </p>
     <div class="mt-8 grid md:grid-cols-3 gap-6">
       {services.map((s) => <ServiceCard service={s} />)}
     </div>
   </div>
-  <TestimonialStrip />
 </Layout>
