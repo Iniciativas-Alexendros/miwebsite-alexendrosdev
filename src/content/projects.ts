@@ -32,25 +32,34 @@ export const projects: Project[] = [
   {
     slug: 'front-valencia',
     title: 'Front Valencia — Restaurante',
-    short: 'Astro + Payload CMS, i18n, WCAG AA. Menú dinámico y reservas.',
-    summary: 'Migración WP lento (LCP >4s) → Astro 4 + Payload CMS. 65% mejora LCP, +40% reservas.',
-    role: 'Arquitectura, full-stack, CMS, deploy, a11y/perf',
-    context: 'WordPress con LCP >4s, problemas a11y, PHP 7.4, edición menú 30min',
-    challenge: 'Zero-downtime, preservar SEO, editor visual cliente no técnico',
+    short:
+      'Web para un negocio local que necesitaba explicar sus servicios y recibir solicitudes de presupuesto.',
+    summary:
+      'Renovamos la web de un restaurante para que los clientes entiendan la oferta, consulten el menú y pidan reserva con menos fricción.',
+    role: 'Diseño, desarrollo y publicación',
+    context:
+      'La web anterior era lenta, difícil de actualizar y no facilitaba las reservas. Editar el menú llevaba demasiado tiempo.',
+    challenge:
+      'Publicar una web clara sin interrumpir el negocio, conservar la visibilidad en buscadores y dejar al equipo un editor sencillo.',
     solution:
-      'Astro View Transitions, Payload tipado, i18n routing, Zod forms, Assets optimization',
+      'Nueva web con menú actualizable, textos más claros y un flujo de reservas más directo. Entregamos guía de uso y comprobamos velocidad y usabilidad antes de publicar.',
     responsibilities: [
-      'Decisión stack',
-      'Dev completo',
-      'Payload config',
-      'Auditoría a11y',
-      'Lighthouse ≥90',
-      'Deploy Vercel+VPS',
-      'Docs'
+      'Definición de estructura y mensajes',
+      'Diseño y desarrollo completo',
+      'Editor para actualizar el menú',
+      'Revisión de usabilidad',
+      'Publicación y documentación'
     ],
-    technologies: ['astro', 'payload-cms', 'typescript', 'tailwind', 'react', 'zod'],
-    highlights: ['Zero-downtime', 'Editor visual', 'a11y teclado/NVDA', 'Rendimiento medido'],
-    results: ['-65% LCP', '0 axe-core violations', '+40% reservas', 'Edición 30min→3min'],
+    technologies: [
+      'Detalles técnicos: Astro + Payload CMS, TypeScript, Tailwind. Objetivo Lighthouse ≥90. Publicación en Vercel + VPS.'
+    ],
+    highlights: [
+      'Publicación sin cortar el servicio',
+      'Editor visual para el equipo',
+      'Usable con teclado',
+      'Velocidad medida antes de entregar'
+    ],
+    results: ['Carga mucho más rápida', '+40% reservas', 'Menú editable en minutos'],
     links: { prod: 'https://example.com', github: 'https://github.com' },
     published: '2024-03-15',
     featured: true,
@@ -58,28 +67,36 @@ export const projects: Project[] = [
   },
   {
     slug: 'graficas-nasve',
-    title: 'Gráficas Nasve — Ecommerce B2B/B2C',
-    short: 'Next.js + motor precios 200+ reglas + Stripe. Venta 48h→5min.',
+    title: 'Gráficas Nasve — Tienda online',
+    short:
+      'Tienda online para un taller familiar que quería vender sus productos sin depender de terceros.',
     summary:
-      'Digitalización imprenta: pricing tiempo real, validación PDF, Stripe Checkout, panel pedidos. +300% pedidos.',
-    role: 'Arquitectura, motor precios, integración pagos, paneles',
-    context: 'Ventas solo email/teléfono, presupuestos lentos, pedidos perdidos',
-    challenge: '100s combinaciones impresión, validar PDFs, Stripe idempotente',
+      'Pasamos de presupuestos por email y teléfono a un catálogo online con precios claros y pago seguro, reduciendo el tiempo de venta de días a minutos.',
+    role: 'Diseño del proceso de venta y desarrollo',
+    context:
+      'Las ventas dependían de llamadas y correos. Los presupuestos tardaban y se perdían pedidos.',
+    challenge:
+      'Calcular precios con muchas combinaciones, validar archivos del cliente y cobrar online de forma fiable.',
     solution:
-      'Next.js 14 App Router, motor precios TS 0 deps, PDF.js + Ghostscript, Stripe Checkout',
+      'Catálogo con precios en tiempo real, validación de archivos y pago online. Paneles claros para seguir pedidos.',
     responsibilities: [
-      'Arquitectura',
-      'Motor precios Vitest ≥90%',
-      'Catálogo a11y',
-      'Validación dual',
-      'Webhooks Stripe',
-      'Paneles',
-      'Deploy',
-      'Tests E2E'
+      'Diseño del flujo de compra',
+      'Motor de precios',
+      'Catálogo usable',
+      'Pagos online',
+      'Paneles de pedidos',
+      'Pruebas antes de publicar'
     ],
-    technologies: ['next-js', 'typescript', 'postgresql', 'prisma', 'stripe', 'zod'],
-    highlights: ['100% TS motor precios', 'Validación dual', 'PCI SAQ-A', 'Sin CMS externo'],
-    results: ['48h→5min venta', '+300% pedidos', '0 errores spec', '-70% tiempo gestión'],
+    technologies: [
+      'Detalles técnicos: Next.js, TypeScript, PostgreSQL, Prisma, Stripe (webhooks idempotentes), Zod.'
+    ],
+    highlights: [
+      'Precios calculados al momento',
+      'Validación de archivos del cliente',
+      'Pagos preparados para evitar cobros duplicados',
+      'Sin depender de un CMS externo'
+    ],
+    results: ['Venta 48h → 5 min', '+300% pedidos', 'Menos tiempo de gestión'],
     links: { prod: 'https://example.com', github: 'https://github.com' },
     published: '2023-11-20',
     featured: true,
@@ -87,27 +104,33 @@ export const projects: Project[] = [
   },
   {
     slug: 'vcf-cribador',
-    title: 'VCF Cribador — CLI Rust',
-    short: 'CLI Rust 3MB para limpiar VCF. 500+ descargas/mes, <2s 10k contactos.',
+    title: 'VCF Cribador — Herramienta de contactos',
+    short: 'Herramienta interna para automatizar un proceso manual y reducir errores.',
     summary:
-      'Resuelve exports VCF desordenados Google/iCloud/Outlook. E.164, dedup, VCF/CSV limpios.',
-    role: 'Autor único: diseño, dev, CI/CD, docs, publishing',
-    context: 'Gestionar contactos multiplataforma frustrante',
-    challenge: 'Parsing VCF 3.0/4.0 robusto, E.164 sin lib pesada, binario único',
-    solution: 'Rust + vcardparse fork, phonenumber ~500KB, clap 4, proptest, cosign releases',
+      'Una utilidad para limpiar y unificar listados de contactos exportados desde distintas agendas, evitando trabajo repetitivo y fallos al migrar.',
+    role: 'Diseño y desarrollo de la herramienta',
+    context:
+      'Migrar contactos entre Google, iCloud y Outlook generaba duplicados, formatos rotos y mucho trabajo manual.',
+    challenge:
+      'Leer distintos formatos de agenda, unificar teléfonos y exportar listados limpios sin instalar software pesado.',
+    solution:
+      'Una herramienta ligera que limpia, deduplica y exporta contactos en formatos útiles, con documentación clara.',
     responsibilities: [
-      'CLI',
-      'Parsing tolerante',
-      'Normalización',
-      'Dedup',
-      'Export',
-      'Tests',
-      'Binarios estáticos',
-      'Docs'
+      'Diseño de la herramienta',
+      'Limpieza y unificación de contactos',
+      'Exportación a formatos útiles',
+      'Pruebas y documentación'
     ],
-    technologies: ['rust', 'clap', 'phonenumber', 'serde'],
-    highlights: ['Binario 3MB', 'Parsing tolerante', 'Dedup configurable', 'FOSS MIT'],
-    results: ['500+ dl/mes', '50k+ migración', '0 CVEs', '<2s 10k contactos'],
+    technologies: [
+      'Detalles técnicos: CLI en Rust (clap, phonenumber, serde). Binario estático ~3MB. FOSS MIT.'
+    ],
+    highlights: [
+      'Instalación sencilla',
+      'Tolera formatos imperfectos',
+      'Deduplicación configurable',
+      'Código abierto'
+    ],
+    results: ['Menos errores al migrar', 'Miles de contactos procesados', 'Uso recurrente'],
     links: { github: 'https://github.com' },
     published: '2024-01-10',
     featured: false,
@@ -115,25 +138,35 @@ export const projects: Project[] = [
   },
   {
     slug: 'alexendros-me',
-    title: 'Alexendros.me — Ensayos',
-    short: 'Next.js lab con 0 JS en contenido, AAA prosa, privacidad real.',
-    summary: 'Lab técnico: design system OKLCH, CI gates, sin GA, 98/100/100/100 Lighthouse móvil.',
-    role: 'Autor único arquitectura + contenido',
-    context: 'Espacio propio ensayos largos y ADRs sin restricciones plataforma',
-    challenge: 'Lectura óptima AAA, teclado/screen reader perfecto, JS mínimo, privacidad',
-    solution: 'Next.js SSG, tokens OKLCH, shadcn/ui a11y, Zod content, flexsearch aislada',
+    title: 'Alexendros.me — Web personal',
+    short:
+      'Web personal rápida y clara, centrada en explicar los servicios sin distraer a quien la visita.',
+    summary:
+      'Espacio propio para explicar servicios y publicar textos largos, con lectura cómoda, privacidad respetada y sin elementos que distraigan.',
+    role: 'Diseño, contenido y desarrollo',
+    context:
+      'Necesitaba un sitio propio para ensayos y documentación sin las limitaciones de plataformas genéricas.',
+    challenge:
+      'Priorizar la lectura, el teclado y la privacidad, manteniendo la web ligera y fácil de mantener.',
+    solution:
+      'Web centrada en el contenido, tipografía legible, sin trackers de publicidad y con un flujo editorial sencillo.',
     responsibilities: [
-      'Arquitectura',
-      'Design system',
-      'a11y AA/AAA',
-      'Perf ≥90',
+      'Arquitectura del sitio',
+      'Sistema visual',
+      'Contenidos',
       'Privacidad',
-      'CI/CD',
-      '15+ ensayos'
+      'Publicación'
     ],
-    technologies: ['next-js', 'typescript', 'tailwind', 'mdx', 'zod', 'axe-core'],
-    highlights: ['0 JS contenido', 'Contraste AAA', 'Flujo Git editorial', 'Sin trackers'],
-    results: ['98/100/100/100', '0 axe-core', '<3min build', '15+ ensayos'],
+    technologies: [
+      'Detalles técnicos: Next.js, TypeScript, Tailwind, MDX, Zod. Objetivo 98/100/100/100 Lighthouse móvil; 0 violaciones axe-core.'
+    ],
+    highlights: [
+      'Lectura cómoda',
+      'Buen contraste',
+      'Sin trackers de publicidad',
+      'Contenido en Git'
+    ],
+    results: ['Carga rápida', 'Lectura clara', 'Privacidad respetada'],
     links: { prod: 'https://example.com', github: 'https://github.com' },
     published: '2024-01-15',
     featured: true,

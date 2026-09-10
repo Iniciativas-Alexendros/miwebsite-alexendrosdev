@@ -1,6 +1,6 @@
 export const contact = {
   channels: [
-    { id: 'form', label: 'Formulario', href: '/contacto', priority: 1 },
+    { id: 'form', label: 'Enviar mensaje', href: '/contacto', priority: 1 },
     {
       id: 'cal',
       label: 'Agendar llamada',
@@ -17,16 +17,15 @@ export const contact = {
     }
   ],
   subjects: [
-    'Proyecto de software · Programación de aplicaciones',
-    'Portal · Blog · Portafolio',
-    'Formación en Nuevas Tecnologías · Herramientas IA para la empresa',
-    'Auditoría de seguridad y posicionamiento',
-    'Sistemas profesionales · Flujos automatizables',
-    'Asesoramiento tecnológico · Consultor especializado'
+    'Web nueva o renovación',
+    'Revisión y plan de mejora',
+    'Plan digital y automatización',
+    'Consulta general',
+    'Otro'
   ],
   messages: {
     success:
-      'Mensaje enviado. Respuesta en <24h laborables. Si prefieres, agenda directa en Cal.com',
-    error: 'No se pudo enviar. Escríbeme directo a hola@alexendros.dev'
+      'Mensaje enviado. Te responderé en menos de 24 horas laborables. Si prefieres, también puedes agendar una llamada.',
+    error: 'No se pudo enviar. Escríbeme directamente a hola@alexendros.dev'
   }
 };

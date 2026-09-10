@@ -12,8 +12,8 @@ const svg = `
   <rect width="1200" height="630" fill="#141a21"/>
   <rect x="48" y="48" width="1104" height="534" rx="24" fill="none" stroke="#FFC53D" stroke-opacity="0.35" stroke-width="2"/>
   <text x="80" y="220" fill="#FFC53D" font-family="DejaVu Sans Mono, monospace" font-size="72" font-weight="700">Alexendros.dev</text>
-  <text x="80" y="300" fill="#e8eaed" font-family="DejaVu Sans Mono, monospace" font-size="36">webs que convierten</text>
-  <text x="80" y="520" fill="#8b949e" font-family="DejaVu Sans Mono, monospace" font-size="24">Lighthouse ≥90 · axe 0 · LCP &lt;1.65s</text>
+  <text x="80" y="300" fill="#e8eaed" font-family="DejaVu Sans Mono, monospace" font-size="36">webs claras y útiles</text>
+  <text x="80" y="520" fill="#8b949e" font-family="DejaVu Sans Mono, monospace" font-size="24">Para profesionales y pequeños negocios</text>
 </svg>
 `;
 

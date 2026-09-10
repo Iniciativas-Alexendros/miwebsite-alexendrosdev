@@ -5,14 +5,14 @@ import { projects } from '../../content/projects';
 ---
 
 <Layout
-  title="Proyectos — Alexendros"
-  description="4 proyectos con métricas reales: LCP, conversión, pedidos, a11y."
+  title="Casos — Alexendros"
+  description="Casos reales: el problema, lo que se hizo y qué cambió. Detalles técnicos disponibles en cada ficha."
 >
-  <div class="mx-auto max-w-6xl px-6 pt-12">
-    <h1 class="text-4xl font-bold">Proyectos con métricas reales</h1>
-    <p class="text-muted mt-3">
-      No galería. Cada proyecto: contexto, reto, solución, responsabilidades, highlights y
-      resultados medidos. Profundidad {'>'} cantidad (70% reclutadores).
+  <div class="mx-auto max-w-6xl px-6 pt-12 pb-16">
+    <h1 class="text-4xl font-bold">Casos reales</h1>
+    <p class="text-muted mt-3 max-w-2xl">
+      En cada proyecto verás el punto de partida, el reto, lo que se hizo y qué cambió. Si te
+      interesa la parte técnica, está en un bloque aparte.
     </p>
     <div class="mt-8 grid md:grid-cols-2 gap-6">
       {projects.map((p) => <ProjectCard project={p} />)}

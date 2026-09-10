@@ -6,67 +6,68 @@ import ProjectCard from '../components/ProjectCard.astro';
 import TestimonialStrip from '../components/TestimonialStrip.astro';
 import { services } from '../content/services';
 import { getFeaturedProjects } from '../content/projects';
+
+const featured = getFeaturedProjects().slice(0, 3);
 ---
 
 <Layout>
   <Hero />
   <section class="mx-auto max-w-6xl px-6 mt-14 cv-auto">
-    <div class="flex justify-between items-end">
-      <h2 class="text-2xl font-bold">Servicios con alcance cerrado</h2>
-      <a href="/servicios" class="text-sm text-muted hover:text-fg focus-ring rounded">Ver todo →</a
+    <div class="flex justify-between items-end gap-4">
+      <h2 class="text-2xl font-bold">Cómo puedo ayudarte</h2>
+      <a href="/servicios" class="text-sm text-muted hover:text-fg focus-ring rounded shrink-0"
+        >Ver todo →</a
       >
     </div>
+    <p class="text-sm text-muted mt-2 max-w-2xl">
+      Tres formas de trabajar: web nueva o renovación, revisión con plan de mejora, o plan digital
+      antes de invertir.
+    </p>
     <div class="mt-6 grid md:grid-cols-3 gap-6">
       {services.map((s) => <ServiceCard service={s} />)}
-    </div>
-    <div class="mt-6 border border-dashed border-border rounded-2xl p-4 text-sm text-muted">
-      <b>Transparencia que convierte:</b> cada servicio muestra qué incluye, qué NO incluye, tecnologías
-      y desde cuánto. Reduce fricción y genera confianza (pricing transparente + testimonios = trust).
     </div>
   </section>
 
   <TestimonialStrip />
 
   <section class="mx-auto max-w-6xl px-6 mt-16 cv-auto">
-    <div class="flex justify-between items-end">
-      <h2 class="text-2xl font-bold">Proyectos con métricas reales</h2>
-      <a href="/proyectos" class="text-sm text-muted hover:text-fg focus-ring rounded"
-        >Ver 4 proyectos →</a
+    <div class="flex justify-between items-end gap-4">
+      <h2 class="text-2xl font-bold">Casos reales, explicados sin letra pequeña</h2>
+      <a href="/proyectos" class="text-sm text-muted hover:text-fg focus-ring rounded shrink-0"
+        >Ver todos los casos →</a
       >
     </div>
-    <p class="text-sm text-muted mt-2">
-      Profundidad &gt; cantidad. 70% reclutadores prefiere pocos proyectos completos con métricas de
-      negocio.
+    <p class="text-sm text-muted mt-2 max-w-2xl">
+      En cada proyecto verás cuál era el problema, qué se hizo y qué cambió. Si te interesa la parte
+      técnica, también puedes consultar los detalles.
     </p>
-    <div class="mt-6 grid md:grid-cols-2 gap-6">
-      {getFeaturedProjects().map((p) => <ProjectCard project={p} />)}
+    <div class="mt-6 grid md:grid-cols-2 gap-6 lg:grid-cols-3">
+      {featured.map((p) => <ProjectCard project={p} />)}
     </div>
   </section>
 
   <section
     class="mx-auto max-w-6xl px-6 mt-16 border border-border rounded-2xl p-8 bg-card cv-auto"
   >
-    <h2 class="text-xl font-bold">¿Por qué esta web convierte más?</h2>
+    <h2 class="text-xl font-bold">Qué puedes esperar al trabajar conmigo</h2>
     <div class="mt-6 grid md:grid-cols-3 gap-6 text-sm">
       <div>
-        <div class="font-mono text-primary">01 — Velocidad</div>
+        <div class="text-primary font-medium">Mensaje claro</div>
         <p class="mt-2 text-muted">
-          Astro con 0 JS en contenido, content-visibility below-fold, sharp, LCP objetivo &lt;1.65s.
-          1s vs 5s = 3× conversión.
+          Tu web explica lo que haces de forma que tus clientes lo entienden en pocos segundos.
         </p>
       </div>
       <div>
-        <div class="font-mono text-primary">02 — Prueba</div>
+        <div class="text-primary font-medium">Proceso definido</div>
         <p class="mt-2 text-muted">
-          Cada proyecto: contexto, reto, solución, resultados con %. axe-core 0 violaciones,
-          Lighthouse ≥90 móvil en 6 rutas.
+          Sabes qué incluye el trabajo, qué no incluye y cuándo validamos cada fase.
+          <a href="/como-trabajo" class="underline focus-ring rounded">Ver cómo trabajo</a>.
         </p>
       </div>
       <div>
-        <div class="font-mono text-primary">03 — Fricción mínima</div>
+        <div class="text-primary font-medium">Contacto sencillo</div>
         <p class="mt-2 text-muted">
-          Formulario 3 campos = 3.2% conversión. Cal.com como alternativa. Sin GA ni cookies de
-          tracking; métricas agregadas Vercel.
+          Formulario corto o llamada. Te respondo con una primera valoración y los siguientes pasos.
         </p>
       </div>
     </div>
@@ -75,18 +76,17 @@ import { getFeaturedProjects } from '../content/projects';
   <section class="mx-auto max-w-6xl px-6 mt-12 text-center cv-auto">
     <h2 class="text-3xl font-bold">¿Encaja con lo que buscas?</h2>
     <p class="text-muted mt-2">
-      Respuesta directa, sin formularios opacos. Si no encajo, te lo digo en la primera
-      conversación.
+      Respuesta directa. Si no encajo, te lo digo en la primera conversación.
     </p>
-    <div class="mt-6 flex justify-center gap-3">
+    <div class="mt-6 flex justify-center gap-3 flex-wrap">
       <a href="/contacto" class="bg-primary text-bg px-6 py-3 rounded-full font-medium focus-ring"
-        >Cuéntame tu proyecto →</a
+        >Cuéntame qué necesitas</a
       >
       <a
         href="https://cal.com/alexendros"
         class="border border-border px-6 py-3 rounded-full focus-ring"
         target="_blank"
-        rel="noopener noreferrer">Agendar 15min</a
+        rel="noopener noreferrer">Agendar 15 min</a
       >
     </div>
   </section>

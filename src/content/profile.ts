@@ -1,52 +1,46 @@
 export const profile = {
   name: 'Alexendros',
-  role: 'Desarrollador Full Stack · Auditor técnico · Consultor',
+  role: 'Diseño y desarrollo web para negocios y proyectos digitales',
   title:
-    'Desarrollador web y consultor tecnológico. Next.js, Astro, Rust, TS. Accesibilidad y rendimiento por defecto.',
+    'Creo webs claras y útiles para que tus clientes entiendan tu propuesta y puedan contactar contigo.',
   summary:
-    'Produzco webs que convierten, no que solo se ven bonitas. 3 servicios claros con alcance y exclusiones explícitas. Código mantenible, CI verificado, Lighthouse ≥90 móvil, 0 violaciones axe-core.',
+    'Combino estrategia, contenido, diseño y desarrollo para convertir una idea o una web que ya existe en una herramienta útil para el negocio. Trabajo con alcance definido, comunicación directa y entregas comprobadas antes de publicar.',
   proofs: [
-    { label: 'LCP mejora', value: '-65%' },
-    { label: 'Conversión form', value: '3.2%' },
-    { label: 'axe-core', value: '0 viol.' }
+    { label: 'Proceso', value: 'Claro' },
+    { label: 'Entregas', value: 'Revisadas' },
+    { label: 'Mantenimiento', value: 'Sencillo' }
   ],
   trustBar: [
-    '85% hiring managers revisan portfolio',
-    '88% clientes investigan online',
-    '1s → 3× conversión vs 5s',
-    '3 campos 3.2% vs 9 campos 0.8%'
-  ],
-  stackPills: [
-    'Next.js',
-    'Astro',
-    'TypeScript',
-    'Tailwind',
-    'Stripe',
-    'Payload',
-    'Prisma',
-    'Zod',
-    'Vitest',
-    'Playwright'
+    'Alcance y precio acordados antes de empezar',
+    'Entregas revisadas antes de publicar',
+    'Comunicación directa, sin intermediarios'
   ],
   method: [
     {
       step: 1,
-      title: 'Definición alcance',
-      desc: 'Contexto, objetivos de negocio y métricas de conversión.'
+      title: 'Entendemos el punto de partida',
+      desc: 'Hablamos de tu negocio, tus clientes y lo que necesitas conseguir.'
     },
     {
       step: 2,
-      title: 'Arquitectura primero',
-      desc: 'ADRs, stack, integraciones Stripe/PayPal, modelo de datos.'
+      title: 'Definimos una propuesta clara',
+      desc: 'Acordamos alcance, prioridades, entregables y presupuesto antes de empezar.'
     },
-    { step: 3, title: 'TS estricto + a11y', desc: 'Zod, componentes accesibles, tests.' },
+    {
+      step: 3,
+      title: 'Diseñamos y construimos',
+      desc: 'Te enseño avances para validar el enfoque antes de llegar al final.'
+    },
     {
       step: 4,
-      title: 'Validación CI',
-      desc: 'typecheck, lint, tests, axe-core 6 rutas, Lighthouse CI.'
+      title: 'Revisamos antes de publicar',
+      desc: 'Compruebo que el sitio sea claro, usable y funcione bien en los dispositivos habituales.'
     },
-    { step: 5, title: 'Deploy Vercel', desc: 'Preview → producción con PROMOTE. <1.65s LCP.' },
-    { step: 6, title: 'Transferencia', desc: 'Docs, formación 30min, 30 días soporte.' }
+    {
+      step: 5,
+      title: 'Publicamos y te entrego lo necesario',
+      desc: 'La web queda lista para usar, con una guía para los puntos que necesites gestionar.'
+    }
   ],
   location: 'Valencia, España — trabajo remoto',
   languages: ['Español nativo', 'Inglés técnico fluido']

@@ -1,14 +1,15 @@
 export const site = {
   name: 'Alexendros',
   url: 'https://alexendros.dev',
-  titleDefault: 'Alexendros — Full Stack: webs que convierten, auditorías y consultoría',
+  titleDefault: 'Alexendros — Webs claras y rápidas para profesionales y pequeños negocios',
   descriptionDefault:
-    'Producción de sitios web (Next.js, Astro) que convierten, auditorías técnicas (Lighthouse ≥90, WCAG AA, SEO) y consultoría. Stripe/PayPal, CI verde, 0 violaciones axe-core.',
+    'Creo y mejoro webs para que tus clientes entiendan lo que haces y te contacten. También reviso sitios existentes y preparo planes de mejora realistas.',
   locale: 'es',
   ogLocale: 'es_ES',
   nav: [
-    { label: 'Servicios', href: '/servicios' },
-    { label: 'Proyectos', href: '/proyectos' },
+    { label: 'Cómo puedo ayudarte', href: '/servicios' },
+    { label: 'Casos', href: '/proyectos' },
+    { label: 'Cómo trabajo', href: '/como-trabajo' },
     { label: 'Sobre mí', href: '/sobre-mi' },
     { label: 'Contacto', href: '/contacto' }
   ],
