@@ -7,7 +7,7 @@
   </defs>
   <rect width="800" height="500" fill="url(#g)"/>
   <text x="48" y="80" fill="#FFC53D" font-family="monospace" font-size="28" font-weight="700">front-valencia</text>
-  <text x="48" y="140" fill="#e8eaed" font-family="monospace" font-size="20">-65% LCP · +40% reservas</text>
+  <text x="48" y="140" fill="#e8eaed" font-family="monospace" font-size="20">Más reservas · Menú fácil de editar</text>
   <rect x="48" y="200" width="280" height="12" rx="6" fill="#FFC53D" fill-opacity="0.8"/>
   <rect x="48" y="232" width="200" height="12" rx="6" fill="#FFC53D" fill-opacity="0.4"/>
 </svg>

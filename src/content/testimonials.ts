@@ -16,7 +16,7 @@ export const testimonials: Testimonial[] = [
     company: 'Front Valencia',
     role: 'Fundadora',
     quote:
-      'Pasamos de un WordPress lento a una web que convierte. Las reservas subieron y el LCP dejó de ser un problema.',
+      'Pasamos de una web lenta a una que explica bien lo que hacemos. Las reservas subieron y el equipo puede actualizar el menú sin complicaciones.',
     photo: '/testimonials/placeholder-1.svg'
   },
   {
@@ -24,15 +24,15 @@ export const testimonials: Testimonial[] = [
     company: 'Gráficas Nasve',
     role: 'Director operaciones',
     quote:
-      'El presupuesto en minutos cambió el negocio. Pedidos claros, Stripe fiable y cero fricción con el equipo.',
+      'El presupuesto en minutos cambió el negocio. Pedidos claros, pagos fiables y cero fricción con el equipo.',
     photo: '/testimonials/placeholder-2.svg'
   },
   {
     name: 'Ana Vega',
     company: 'Studio Norte',
-    role: 'CTO',
+    role: 'Responsable de producto',
     quote:
-      'La auditoría priorizó lo que importaba. Informe accionable, axe en verde y un plan que el equipo pudo ejecutar.',
+      'La revisión priorizó lo que importaba. Informe claro y un plan que el equipo pudo ejecutar sin rodeos.',
     photo: '/testimonials/placeholder-3.svg'
   }
 ];

@@ -15,7 +15,6 @@ export const profile = {
     'Entregas revisadas antes de publicar',
     'Comunicación directa, sin intermediarios'
   ],
-  stackPills: [] as string[],
   method: [
     {
       step: 1,
