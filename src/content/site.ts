@@ -10,8 +10,7 @@ export const site = {
     { label: 'Cómo puedo ayudarte', href: '/servicios' },
     { label: 'Casos', href: '/proyectos' },
     { label: 'Cómo trabajo', href: '/como-trabajo' },
-    { label: 'Sobre mí', href: '/sobre-mi' },
-    { label: 'Contacto', href: '/contacto' }
+    { label: 'Sobre mí', href: '/sobre-mi' }
   ],
   footerNav: [
     { label: 'Aviso legal', href: '/aviso-legal' },
