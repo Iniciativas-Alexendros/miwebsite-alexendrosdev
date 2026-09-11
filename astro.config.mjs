@@ -7,6 +7,7 @@ export default defineConfig({
   site: 'https://alexendros.dev',
   integrations: [tailwind({ applyBaseStyles: false }), react()],
   output: 'hybrid',
+  // @astrojs/vercel@7.8 no admite runtime nodejs22.x; pnpm build aplica scripts/fix-vercel-runtime.mjs
   adapter: vercel({
     maxDuration: 10
   }),
