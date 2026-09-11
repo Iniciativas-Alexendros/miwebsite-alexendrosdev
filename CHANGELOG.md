@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/compare/v1.2.0...v1.2.1) (2026-09-11)
+
+### Mantenimiento
+
+* **ops:** trigger Production rebuild for Cal webhook envs ([d697fc1](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/commit/d697fc1381c7d3a712dab506abef2d288ccad6f1))
+
 ## [1.2.0](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/compare/v1.1.1...v1.2.0) (2026-09-11)
 
 ### Novedades
