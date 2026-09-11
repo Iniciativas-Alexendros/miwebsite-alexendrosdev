@@ -41,11 +41,11 @@ test('contacto muestra reservas Cal públicas, QR y no el retainer', async ({ pa
   await expect(page.getByRole('heading', { name: 'O escríbeme' })).toBeVisible();
   await expect(page.getByLabel('Nombre*')).toBeVisible();
 
-  const diagnostico = page.getByRole('link', { name: 'Reservar diagnóstico' });
+  const diagnostico = page.getByRole('link', { name: 'Reservar diagnóstico', exact: true });
   await expect(diagnostico).toHaveAttribute('href', 'https://cal.com/alexendros/diagnostico');
   await expect(diagnostico).toHaveAttribute('data-cal-link', 'alexendros/diagnostico');
 
-  const sesion = page.getByRole('link', { name: 'Reservar sesión técnica' });
+  const sesion = page.getByRole('link', { name: 'Reservar sesión técnica', exact: true });
   await expect(sesion).toHaveAttribute('href', 'https://cal.com/alexendros/sesion-tecnica');
   await expect(sesion).toHaveAttribute('data-cal-link', 'alexendros/sesion-tecnica');
 
