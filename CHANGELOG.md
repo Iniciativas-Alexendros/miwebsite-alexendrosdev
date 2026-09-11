@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/compare/v1.2.1...v1.3.0) (2026-09-11)
+
+### Novedades
+
+* **contacto:** reservas Cal.com con QR ([#32](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/32)) ([00a30e8](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/commit/00a30e8fc4651a8f8b97a3aeceabf30ea7e71e9f))
+
 ## [1.2.1](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/compare/v1.2.0...v1.2.1) (2026-09-11)
 
 ### Mantenimiento
