@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/compare/v1.1.1...v1.2.0) (2026-09-11)
+
+### Novedades
+
+* **api:** webhook Cal.com → Notion Leads ([507aab1](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/commit/507aab1b9ccaecd55f325d890920c4406b71ce90))
+
 ## [1.1.1](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/compare/v1.1.0...v1.1.1) (2026-09-11)
 
 ### Correcciones
