@@ -53,12 +53,18 @@ export default function ContactForm({ subjects, calUrl, successMessage, errorMes
     }
   };
 
+  const bookingIsExternal = /^https?:\/\//i.test(calUrl);
+
   if (status === 'ok') {
     return (
       <div className="border border-primary/30 bg-primary/10 rounded-2xl p-6" role="status">
         ✓ {successMessage}{' '}
-        <a className="underline" href={calUrl} target="_blank" rel="noopener noreferrer">
-          Cal.com
+        <a
+          className="underline rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          href={calUrl}
+          {...(bookingIsExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        >
+          Reservar una sesión
         </a>
       </div>
     );

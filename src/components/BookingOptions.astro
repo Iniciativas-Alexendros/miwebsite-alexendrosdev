@@ -1,0 +1,60 @@
+---
+import { contact } from '../content/contact';
+import { qrSvg } from '../lib/qrSvg';
+
+const events = contact.bookings.events.map((event) => ({
+  ...event,
+  qrMarkup: qrSvg(event.url)
+}));
+---
+
+<section id="reservar" class="mt-10" aria-labelledby="reservar-heading">
+  <h2 id="reservar-heading" class="text-2xl font-bold">{contact.bookings.heading}</h2>
+  <p class="text-muted mt-2">{contact.bookings.intro}</p>
+  <div class="mt-6 grid gap-6 md:grid-cols-2">
+    {
+      events.map((event) => (
+        <article class="border border-border rounded-2xl p-6 bg-card flex flex-col sm:flex-row gap-6">
+          <div class="min-w-0 flex-1">
+            <h3 class="font-bold text-lg leading-tight">{event.title}</h3>
+            <p class="mt-1 font-medium text-primary">{event.priceLabel}</p>
+            <p class="mt-2 text-sm text-muted">{event.summary}</p>
+            <a
+              href={event.url}
+              class="mt-4 inline-flex bg-primary text-bg px-5 py-2.5 rounded-full font-medium focus-ring"
+              data-cal-link={event.calLink}
+              data-cal-config='{"layout":"month_view","theme":"dark"}'
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {event.cta}
+            </a>
+          </div>
+          <figure class="m-0 shrink-0 text-center sm:w-32">
+            <a
+              href={event.url}
+              class="inline-block rounded-xl focus-ring"
+              data-cal-link={event.calLink}
+              data-cal-config='{"layout":"month_view","theme":"dark"}'
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={event.qrLabel}
+            >
+              <span
+                class="block h-28 w-28 rounded-xl bg-white p-2"
+                aria-hidden="true"
+                set:html={event.qrMarkup}
+              />
+            </a>
+            <figcaption class="mt-2 text-xs text-muted">{contact.bookings.scanLabel}</figcaption>
+          </figure>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import { setupCalBookingTriggers } from '../lib/calEmbed';
+  setupCalBookingTriggers();
+</script>

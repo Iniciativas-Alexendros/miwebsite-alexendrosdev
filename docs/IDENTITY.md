@@ -31,6 +31,7 @@ Quien eres: role Full Stack · Auditor · Consultor, summary conversion-focused,
 - ServiceCard.astro: pricingDesde timeline metricas scope count hover border primary
 - ProjectCard.astro: titulo short results pills primary/10 tech pills role footer
 - ContactForm.tsx: Unica isla React client:load. Campos nombre* email* empresa opcional asunto* select 6 opciones mensaje* 20-2000 consent RGPD no pre-marcado honeypot hidden. Zod validacion. Nota conversion.
+- BookingOptions.astro: CTAs Cal.com (diagnóstico 75€, sesión técnica 150€) con embed.js diferido en modal + QR SVG de build (uqr). Retainer oculto.
 
 ## Paginas
 
@@ -38,7 +39,7 @@ Quien eres: role Full Stack · Auditor · Consultor, summary conversion-focused,
 - servicios/index.astro y [slug].astro: metricas arriba pricing timeline 2 col problemas/alcance/exclusiones vs entregables/proceso/stack CTA sticky
 - proyectos/index.astro y [slug].astro: contexto reto solucion responsabilidades vs stack highlights links CTA Similar?
 - sobre-mi.astro: method 6 pasos por que distinto 0 JS contenido self-hosted sin GA
-- contacto.astro: Form+canales Cal.com+email que incluir para convertir rapido nota privacidad 12 meses RGPD 6.1.b
+- contacto.astro: Reservas Cal (diagnóstico 75€ / sesión técnica 150€ + QR) + Form + canales email; nota privacidad 12 meses RGPD 6.1.b
 - api/contact.ts: Zod honeypot rate-limit Upstash nodemailer Proton SMTP From/To operaciones@alexendros.dev
 - aviso-legal.astro privacidad.astro: NIF 21002968N C/Higinio Noja 21 p9 Valencia hola@alexendros.dev sin alta autonomo bajo SMI 12 meses retencion Proton Vercel DPF+SCC
 
