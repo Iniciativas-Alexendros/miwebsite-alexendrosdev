@@ -17,7 +17,7 @@ Astro 4 hybrid + isla React (`ContactForm`, `client:load`) + Tailwind OKLCH + Ty
 
 ```bash
 pnpm i
-cp .env.example .env   # SMTP_* + UPSTASH_*
+cp .env.example .env   # SMTP_* + UPSTASH_* + CAL_WEBHOOK_SECRET + NOTION_*
 pnpm gen:og            # public/og/default.png
 pnpm dev               # http://localhost:4321
 pnpm build && pnpm preview
@@ -45,6 +45,9 @@ Obligatorias para que el formulario funcione ([issue #13](https://github.com/Ini
 - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` (Proton app password)
 - `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`
 - `PUBLIC_SITE_URL=https://alexendros.dev`
+- `CAL_WEBHOOK_SECRET` (secreto del webhook en Cal.com; obligatorio para verificar `X-Cal-Signature-256`)
+- `NOTION_TOKEN` (integración interna con acceso a Leads / Bookings)
+- `NOTION_LEADS_DATABASE_ID=84b33eb7-f117-46ad-aedd-120852b5cbb7` — **data source id** para `@notionhq/client` v5 (`Notion-Version: 2025-09-03`). No uses el id de la página contenedora (`7c26e759d97d4f398b7955944a084b69`). Opcional: `NOTION_LEADS_DATA_SOURCE_ID` (gana si ambos existen).
 
 Procedimiento (sin imprimir valores):
 
@@ -64,6 +67,39 @@ curl -sS -X POST 'https://alexendros.dev/api/contact' \
 # Con SMTP: {"ok":true} + email en operaciones@alexendros.dev
 # Sin SMTP: {"error":"Service unavailable"} (HTTP 503)
 ```
+
+### Cal.com → Notion Leads (`POST /api/cal/webhook`)
+
+Webhook firmado (HMAC-SHA256 del body en crudo, cabecera `X-Cal-Signature-256`). Eventos: `BOOKING_CREATED`, `BOOKING_PAID`, `BOOKING_PAYMENT_INITIATED`, `BOOKING_RESCHEDULED`, `BOOKING_CANCELLED`, `BOOKING_REJECTED`. Upsert en la data source [Leads / Bookings](https://app.notion.com/p/7c26e759d97d4f398b7955944a084b69) keyed by `payload.uid` → `cal_booking_id`. Upstash Redis **solo** para idempotencia (`alexendros:cal:uid:{uid}:{trigger}`, TTL 7 días); Notion es la fuente de verdad.
+
+En Cal.com: subscriber URL `https://alexendros.dev/api/cal/webhook` (o la preview `*.vercel.app`) y el mismo secreto que `CAL_WEBHOOK_SECRET`.
+
+Cargar en Vercel (**Production** y **Preview** del proyecto `alexendros-dev`), sin imprimir valores:
+
+```bash
+vercel env add CAL_WEBHOOK_SECRET production
+vercel env add NOTION_TOKEN production
+vercel env add NOTION_LEADS_DATABASE_ID production
+# repetir para preview; el id de data source no es secreto:
+# 84b33eb7-f117-46ad-aedd-120852b5cbb7
+```
+
+Prueba local con firma falsa (el HMAC debe calcularse sobre **exactamente** los mismos bytes que `--data-binary`):
+
+```bash
+# .env con CAL_WEBHOOK_SECRET, NOTION_*, UPSTASH_* (o espera 503 si faltan Notion/Redis)
+export CAL_WEBHOOK_SECRET='test-secret'
+cat > /tmp/cal-body.json <<'EOF'
+{"triggerEvent":"BOOKING_CREATED","createdAt":"2026-09-11T09:00:00.000Z","payload":{"uid":"test-uid-local","type":"diagnostico-web","title":"Diagnóstico","startTime":"2026-09-12T10:00:00.000Z","attendees":[{"name":"Test","email":"test@example.com"}],"metadata":{}}}
+EOF
+SIG=$(node -e "const fs=require('node:fs'); const c=require('node:crypto'); const b=fs.readFileSync('/tmp/cal-body.json'); process.stdout.write(c.createHmac('sha256', process.env.CAL_WEBHOOK_SECRET).update(b).digest('hex'))")
+curl -sS -X POST 'http://localhost:4321/api/cal/webhook' \
+  -H 'Content-Type: application/json' \
+  -H "X-Cal-Signature-256: $SIG" \
+  --data-binary @/tmp/cal-body.json
+```
+
+Sin secreto: HTTP 503 `{ "error": "Service unavailable" }`. Firma inválida: HTTP 401. CI no llama a Notion ni Redis (mocks en vitest).
 
 ## DONE
 

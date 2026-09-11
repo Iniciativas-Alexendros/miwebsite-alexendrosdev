@@ -15,7 +15,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
-    "test:contract": "vitest run src/lib/contactSchema.test.ts src/lib/smtpConfig.test.ts src/lib/contactHandler.test.ts",
+    "test:contract": "vitest run src/lib/contactSchema.test.ts src/lib/smtpConfig.test.ts src/lib/contactHandler.test.ts src/lib/calSignature.test.ts src/lib/calWebhookSchema.test.ts src/lib/calNotionMapper.test.ts src/lib/calWebhookHandler.test.ts",
     "gen:og": "node scripts/gen-og.mjs",
     "test:e2e": "playwright test",
     "lhci": "lhci autorun --config=./lighthouserc.json"
@@ -27,6 +27,7 @@
     "@astrojs/vercel": "^7.8.2",
     "@fontsource-variable/inter": "^5.1.0",
     "@fontsource-variable/jetbrains-mono": "^5.1.0",
+    "@notionhq/client": "^5.26.0",
     "@upstash/ratelimit": "^2.0.4",
     "@upstash/redis": "^1.34.3",
     "@vercel/analytics": "^2.0.1",
