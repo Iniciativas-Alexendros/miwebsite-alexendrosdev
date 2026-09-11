@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/compare/v1.1.0...v1.1.1) (2026-09-11)
+
+### Correcciones
+
+* **vercel:** forzar runtime Node 22 desde engines.node ([5f03e8d](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/commit/5f03e8dbb8993e835699651d4194fef6ec44588e))
+
 ## [1.1.0](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/compare/v1.0.0...v1.1.0) (2026-09-10)
 
 ### Novedades
