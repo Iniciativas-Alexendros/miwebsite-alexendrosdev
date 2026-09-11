@@ -11,7 +11,7 @@ Sitio profesional de Alexendros (conversión + contratación). **Producción:** 
 
 ## Stack
 
-Astro 4 hybrid + isla React (`ContactForm`, `client:load`) + Tailwind OKLCH + TypeScript estricto + Zod + API serverless en Vercel. Fuentes Inter + JetBrains Mono self-hosted. Sin GA ni cookies de tracking; sí Vercel Analytics y Speed Insights (agregados).
+Astro 4 hybrid + isla React (`ContactForm`, `client:load`) + Tailwind OKLCH + TypeScript estricto + Zod + API serverless en Vercel. Fuentes Inter + JetBrains Mono self-hosted. Sin GA ni cookies de tracking; sí Vercel Analytics y Speed Insights (agregados). Reservas públicas en `/contacto` vía Cal.com (`embed.js` diferido, modal).
 
 ## Dev
 
@@ -67,6 +67,17 @@ curl -sS -X POST 'https://alexendros.dev/api/contact' \
 # Con SMTP: {"ok":true} + email en operaciones@alexendros.dev
 # Sin SMTP: {"error":"Service unavailable"} (HTTP 503)
 ```
+
+### Reservas públicas (Cal.com)
+
+Enlaces canónicos en `src/content/contact.ts` (la página `/contacto` no sustituye el formulario):
+
+| Evento         | Precio | URL                                       |
+| -------------- | ------ | ----------------------------------------- |
+| Diagnóstico    | 75 €   | https://cal.com/alexendros/diagnostico    |
+| Sesión técnica | 150 €  | https://cal.com/alexendros/sesion-tecnica |
+
+El retainer es privado y **no** se enlaza en el sitio. Los QR se generan en build (`uqr`) apuntando a esas mismas URLs.
 
 ### Cal.com → Notion Leads (`POST /api/cal/webhook`)
 

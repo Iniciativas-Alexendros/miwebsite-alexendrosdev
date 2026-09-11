@@ -33,3 +33,30 @@ test('contact form validacion Zod y envio', async ({ page }) => {
   await page.getByRole('button', { name: /Enviar/ }).click();
   await expect(page.getByRole('status')).toContainText(/Mensaje enviado/i, { timeout: 10000 });
 });
+
+test('contacto muestra reservas Cal públicas, QR y no el retainer', async ({ page }) => {
+  await page.goto('/contacto');
+
+  await expect(page.getByRole('heading', { name: 'Reserva una sesión' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'O escríbeme' })).toBeVisible();
+  await expect(page.getByLabel('Nombre*')).toBeVisible();
+
+  const diagnostico = page.getByRole('link', { name: 'Reservar diagnóstico' });
+  await expect(diagnostico).toHaveAttribute('href', 'https://cal.com/alexendros/diagnostico');
+  await expect(diagnostico).toHaveAttribute('data-cal-link', 'alexendros/diagnostico');
+
+  const sesion = page.getByRole('link', { name: 'Reservar sesión técnica' });
+  await expect(sesion).toHaveAttribute('href', 'https://cal.com/alexendros/sesion-tecnica');
+  await expect(sesion).toHaveAttribute('data-cal-link', 'alexendros/sesion-tecnica');
+
+  await expect(page.getByText('75 €', { exact: true })).toBeVisible();
+  await expect(page.getByText('150 €', { exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('link', { name: /Código QR para reservar Diagnóstico/ })
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', { name: /Código QR para reservar Sesión técnica/ })
+  ).toBeVisible();
+  await expect(page.getByText('Escanea para reservar')).toHaveCount(2);
+  await expect(page.locator('body')).not.toContainText(/retainer/i);
+});

@@ -1,64 +1,73 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BookingOptions from '../components/BookingOptions.astro';
 import ContactForm from '../components/ContactForm';
 import { contact } from '../content/contact';
-import { site } from '../content/site';
 ---
 
 <Layout
   title="Contacto — Alexendros"
   description="Cuéntame qué necesitas. Te responderé con una primera valoración y los siguientes pasos."
 >
-  <div class="mx-auto max-w-4xl px-6 py-16 md:py-24 grid md:grid-cols-[1.2fr_0.8fr] gap-10">
-    <div>
-      <h1 class="text-4xl font-bold">Cuéntame qué necesitas</h1>
-      <p class="text-muted mt-3">
-        Explícame brevemente tu negocio, el problema que quieres resolver y, si ya tienes una web,
-        comparte su dirección. Te responderé con una primera valoración y los siguientes pasos.
-      </p>
-      <div class="mt-6">
-        <ContactForm
-          client:load
-          subjects={[...contact.subjects]}
-          calUrl={site.social.cal}
-          successMessage={contact.messages.success}
-          errorMessage={contact.messages.error}
-        />
+  <div class="mx-auto max-w-4xl px-6 py-16 md:py-24">
+    <h1 class="text-4xl font-bold">Cuéntame qué necesitas</h1>
+    <p class="text-muted mt-3 max-w-2xl">
+      Explícame brevemente tu negocio, el problema que quieres resolver y, si ya tienes una web,
+      comparte su dirección. Te responderé con una primera valoración y los siguientes pasos.
+    </p>
+
+    <BookingOptions />
+
+    <div class="mt-12 grid md:grid-cols-[1.2fr_0.8fr] gap-10">
+      <div id="escribir">
+        <h2 class="font-bold text-xl">O escríbeme</h2>
+        <p class="text-muted mt-2 text-sm">
+          Si todavía no encaja una sesión, cuéntame el contexto y te respondo por correo.
+        </p>
+        <div class="mt-6">
+          <ContactForm
+            client:load
+            subjects={[...contact.subjects]}
+            calUrl="#reservar"
+            successMessage={contact.messages.success}
+            errorMessage={contact.messages.error}
+          />
+        </div>
       </div>
-    </div>
-    <div class="space-y-6">
-      <div class="border border-border rounded-2xl p-6 bg-card">
-        <h2 class="font-bold text-base">Otras formas de escribirme</h2>
-        <ul class="mt-3 space-y-2 text-sm">
-          {
-            contact.channels.map((c) => (
-              <li>
-                <a
-                  href={c.href}
-                  class="hover:text-primary focus-ring rounded"
-                  {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                >
-                  {c.label}
-                </a>
-                {c.external ? ' ↗' : ''}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <div class="border border-border rounded-2xl p-6 bg-card">
-        <h2 class="font-bold text-base">Qué ayuda incluir</h2>
-        <ul class="mt-3 list-disc pl-5 text-sm text-muted space-y-1">
-          <li>Qué quieres conseguir</li>
-          <li>Si ya tienes web, su dirección</li>
-          <li>Plazo orientativo, si lo tienes</li>
-          <li>Presupuesto aproximado, si lo tienes</li>
-        </ul>
-      </div>
-      <div class="border border-dashed border-border rounded-2xl p-4 text-sm text-muted">
-        Usaré tus datos solo para responder a esta consulta. Puedes consultar la{' '}
-        <a href="/privacidad" class="underline focus-ring rounded">política de privacidad</a> antes de
-        enviar.
+      <div class="space-y-6">
+        <div class="border border-border rounded-2xl p-6 bg-card">
+          <h2 class="font-bold text-base">Otras formas de escribirme</h2>
+          <ul class="mt-3 space-y-2 text-sm">
+            {
+              contact.channels.map((c) => (
+                <li>
+                  <a
+                    href={c.href}
+                    class="hover:text-primary focus-ring rounded"
+                    {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  >
+                    {c.label}
+                  </a>
+                  {c.external ? ' ↗' : ''}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="border border-border rounded-2xl p-6 bg-card">
+          <h2 class="font-bold text-base">Qué ayuda incluir</h2>
+          <ul class="mt-3 list-disc pl-5 text-sm text-muted space-y-1">
+            <li>Qué quieres conseguir</li>
+            <li>Si ya tienes web, su dirección</li>
+            <li>Plazo orientativo, si lo tienes</li>
+            <li>Presupuesto aproximado, si lo tienes</li>
+          </ul>
+        </div>
+        <div class="border border-dashed border-border rounded-2xl p-4 text-sm text-muted">
+          Usaré tus datos solo para responder a esta consulta. Puedes consultar la{' '}
+          <a href="/privacidad" class="underline focus-ring rounded">política de privacidad</a> antes
+          de enviar.
+        </div>
       </div>
     </div>
   </div>
