@@ -2,8 +2,8 @@ import type { ImageMetadata } from 'astro';
 import { z } from 'zod';
 import coverFront from '../assets/projects/front-valencia.svg';
 import coverNasve from '../assets/projects/graficas-nasve.svg';
-import coverVcf from '../assets/projects/vcf-cribador.svg';
-import coverMe from '../assets/projects/alexendros-me.svg';
+import coverVcf from '../assets/projects/vcf-cribador.webp';
+import coverMe from '../assets/projects/alexendros-me.webp';
 
 export const projectSchema = z.object({
   slug: z.string().min(1),
@@ -131,7 +131,7 @@ export const projects: Project[] = [
       'Código abierto'
     ],
     results: ['Menos errores al migrar', 'Miles de contactos procesados', 'Uso recurrente'],
-    links: { github: 'https://github.com' },
+    links: { github: 'https://github.com/Iniciativas-Alexendros/zedazo' },
     published: '2024-01-10',
     featured: false,
     cover: coverVcf
@@ -167,7 +167,10 @@ export const projects: Project[] = [
       'Contenido en Git'
     ],
     results: ['Carga rápida', 'Lectura clara', 'Privacidad respetada'],
-    links: { prod: 'https://example.com', github: 'https://github.com' },
+    links: {
+      prod: 'https://alexendros.me',
+      github: 'https://github.com/Iniciativas-Alexendros/website-alexendrosme'
+    },
     published: '2024-01-15',
     featured: true,
     cover: coverMe
