@@ -1,3 +1,9 @@
+## [1.3.1](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/compare/v1.3.0...v1.3.1) (2026-09-12)
+
+### Contenido
+
+* **proyectos:** portadas reales de alexendros.me y Zedazo ([#33](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/33)) ([52d30a4](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/commit/52d30a44c33970872b61b3495ad76c324d89d668))
+
 ## [1.3.0](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/compare/v1.2.1...v1.3.0) (2026-09-11)
 
 ### Novedades
