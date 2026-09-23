@@ -13,9 +13,9 @@ const inputClass =
   'mt-1 w-full bg-bg border border-border rounded-xl px-3 py-2 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
 
 export default function ContactForm({ subjects, calUrl, successMessage, errorMessage }: Props) {
-  const [status, setStatus] = useState<'idle' | 'ok' | 'error' | 'rate_limited' | 'unavailable' | 'loading'>(
-    'idle'
-  );
+  const [status, setStatus] = useState<
+    'idle' | 'ok' | 'error' | 'rate_limited' | 'unavailable' | 'loading'
+  >('idle');
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -213,8 +213,8 @@ export default function ContactForm({ subjects, calUrl, successMessage, errorMes
       )}
       {status === 'unavailable' && (
         <div className="text-sm text-red-400" role="alert">
-          El servicio de contacto no está disponible ahora. Escríbenos a operaciones@alexendros.dev o
-          reserva en{' '}
+          El servicio de contacto no está disponible ahora. Escríbenos a operaciones@alexendros.dev
+          o reserva en{' '}
           <a className="underline" href={calUrl} target="_blank" rel="noopener noreferrer">
             Cal.com
           </a>
