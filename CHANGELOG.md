@@ -1,3 +1,9 @@
+## [1.3.2](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/compare/v1.3.1...v1.3.2) (2026-09-23)
+
+### Correcciones
+
+* **contact:** Upstash singleton, 429/503 UX, docs CONTRIBUTING ([#39](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/issues/39)) ([4c77c69](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/commit/4c77c69a40f9f0b2d6533b043a63ccbeec7a7cb8))
+
 ## [1.3.1](https://github.com/Iniciativas-Alexendros/miwebsite-alexendrosdev/compare/v1.3.0...v1.3.1) (2026-09-12)
 
 ### Contenido
