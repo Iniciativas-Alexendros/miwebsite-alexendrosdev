@@ -115,6 +115,6 @@ Sin secreto: HTTP 503 `{ "error": "Service unavailable" }`. Firma inválida: HTT
 ## DONE
 
 - Build verde, 0 errores TS; axe-core 0 violaciones en 6 rutas; Lighthouse CI ≥90 móvil
-- Formulario (código) → Upstash rate-limit + Proton SMTP (env pendientes #13)
+- Formulario (código) → Upstash rate-limit + Proton SMTP (configurado en Vercel; ver issue #13)
 - OG 1200×630, favicon, fonts self-hosted, métricas agregadas Vercel
 - Apex en producción sobre este repo / proyecto `alexendros-dev`

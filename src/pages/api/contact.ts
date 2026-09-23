@@ -14,6 +14,21 @@ export const prerender = false;
 const MAIL_FROM = 'operaciones@alexendros.dev';
 const MAIL_TO = 'operaciones@alexendros.dev';
 
+let cachedRatelimit: Ratelimit | null = null;
+
+function getContactRatelimit(): Ratelimit {
+  if (cachedRatelimit) return cachedRatelimit;
+  const url = import.meta.env.UPSTASH_REDIS_REST_URL;
+  const token = import.meta.env.UPSTASH_REDIS_REST_TOKEN;
+  if (!url || !token) throw new Error('redis_misconfigured');
+  cachedRatelimit = new Ratelimit({
+    redis: new Redis({ url, token }),
+    limiter: Ratelimit.slidingWindow(10, '1 m'),
+    prefix: 'alexendros:contact'
+  });
+  return cachedRatelimit;
+}
+
 function createProductionDeps(): ContactDeps {
   return {
     getEnv: () => ({
@@ -25,15 +40,7 @@ function createProductionDeps(): ContactDeps {
       UPSTASH_REDIS_REST_TOKEN: import.meta.env.UPSTASH_REDIS_REST_TOKEN
     }),
     rateLimit: async (ip) => {
-      const url = import.meta.env.UPSTASH_REDIS_REST_URL;
-      const token = import.meta.env.UPSTASH_REDIS_REST_TOKEN;
-      if (!url || !token) throw new Error('redis_misconfigured');
-      const ratelimit = new Ratelimit({
-        redis: new Redis({ url, token }),
-        limiter: Ratelimit.slidingWindow(10, '1 m'),
-        prefix: 'alexendros:contact'
-      });
-      const result = await ratelimit.limit(ip);
+      const result = await getContactRatelimit().limit(ip);
       return { success: result.success, reset: result.reset };
     },
     sendMail: async ({ name, email, company, subject, message, smtp }) => {
