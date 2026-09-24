@@ -1,6 +1,14 @@
 # alexendros.dev
 
+### Propósito de este documento
+
+- **Objetivos:** Presentar el sitio, el stack, el CI canónico y el contrato de contacto/reservas para humanos, CI y agentes.
+- **Estructura:** Identidad → stack → desarrollo → CI → deploy y secretos → reservas/webhook → DONE.
+- **Contenido a integrar según contexto:** Adapta badges, URLs y env de este portfolio. No copies tokens/DS de webconfig ni el alcance de otro producto. No muevas pricing ni servicios desde el README.
+
 Sitio profesional de Alexendros (conversión + contratación). **Producción:** [https://alexendros.dev](https://alexendros.dev).
+
+**Ref:** [ARCHITECTURE](ARCHITECTURE.md) · [AGENTS](AGENTS.md) · [CONTRIBUTING](CONTRIBUTING.md) · [SECURITY](SECURITY.md) · [SUPPORT](SUPPORT.md) · [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) · [docs/](docs/)
 
 |                   |                                                                                                                           |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -21,14 +29,25 @@ cp .env.example .env   # SMTP_* + UPSTASH_* + CAL_WEBHOOK_SECRET + NOTION_*
 pnpm gen:og            # public/og/default.png
 pnpm dev               # http://localhost:4321
 pnpm build && pnpm preview
-pnpm test:e2e
+pnpm smoke             # estático + HTTP 200 (job smoke)
+pnpm test:e2e          # opt-in (label e2e / workflow_dispatch)
 ```
 
 `preview` sirve `.vercel/output/static` (el adapter Vercel no soporta `astro preview`). Node **22** (`engines.node` / `.nvmrc`).
 
 ## CI
 
-GitHub Actions: typecheck → lint → format:check → vitest → build → Playwright (axe 6 rutas + contact) → Lighthouse CI móvil ≥90.
+Workflow `.github/workflows/ci.yml`, jobs canónicos:
+
+| Job       | Qué corre                                                 |
+| --------- | --------------------------------------------------------- |
+| `quality` | typecheck, lint, format:check                             |
+| `test`    | Vitest                                                    |
+| `build`   | Astro + artefacto `.vercel/output/static`                 |
+| `smoke`   | `scripts/smoke.sh` (rutas clave HTTP 200)                 |
+| `e2e`     | Playwright (axe + contacto) + LHCI móvil ≥90 — **opt-in** |
+
+e2e/LHCI no bloquean el PR por defecto. Actívalos con la label `e2e` o `workflow_dispatch` (input `e2e`). Dependencias: Renovate (`.github/renovate.json`); sin Dependabot version-updates.
 
 ## Deploy
 
@@ -36,7 +55,7 @@ GitHub Actions: typecheck → lint → format:check → vitest → build → Pla
 - **Promote = merge a `main`** con CI verde. No desplegar a Production desde ramas de feature ni “Promote” ad-hoc sin revisión.
 - **Releases automáticas** con [semantic-release](https://semantic-release.gitbook.io/) en cada push a `main` (`release.yml`): SemVer; `content`/`docs`/`chore`/`style`/`refactor` → patch, `feat` → minor, breaking → major; changelog en español por secciones. **Versionado ≠ deploy** a Vercel.
 - Dominio apex `alexendros.dev` (+ redirect `www` → apex) en el proyecto `alexendros-dev`.
-- Checklist merge: typecheck, lint, format, vitest, build, e2e/axe, LHCI ≥90 móvil en el PR antes de fusionar.
+- Checklist merge: jobs `quality`, `test`, `build`, `smoke` verdes. e2e/axe y LHCI ≥90 móvil si el PR toca UI (label `e2e`).
 
 ### Variables de entorno (Production + Preview)
 

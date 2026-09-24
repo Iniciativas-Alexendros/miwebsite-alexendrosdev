@@ -1,5 +1,11 @@
 # Estado — alexendros.dev (Astro MVP)
 
+### Propósito de este documento
+
+- **Objetivos:** Registrar el estado del MVP, pendientes operativos y criterios de mantenimiento.
+- **Estructura:** Objetivos → arquitectura → pendiente → predecesor → releases → mantenimiento.
+- **Contenido a integrar según contexto:** Actualiza issues y gates. No uses este archivo como CMS ni para cambiar pricing.
+
 MVP en **producción** en [https://alexendros.dev](https://alexendros.dev). Repo canónico: `Iniciativas-Alexendros/miwebsite-alexendrosdev`. Proyecto Vercel: **`alexendros-dev`**.
 
 ## Objetivos cumplidos
@@ -16,7 +22,7 @@ MVP en **producción** en [https://alexendros.dev](https://alexendros.dev). Repo
 - Páginas: home, servicios, proyectos, sobre-mí, contacto, aviso-legal, privacidad
 - Única isla cliente: `ContactForm.tsx` (`client:load`)
 - API: `src/pages/api/contact.ts` (Zod, honeypot, rate-limit, nodemailer)
-- CI: typecheck, lint, format, vitest, build, Playwright axe, LHCI
+- CI: jobs `quality`, `test`, `build`, `smoke`; e2e/LHCI opt-in
 - Deploy Hobby: preview por PR; producción = merge a `main`
 
 ## Pendiente operativo
