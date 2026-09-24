@@ -1,12 +1,18 @@
 # INSTRUCCIONES CURSOR — Arranque en este repo
 
+### Propósito de este documento
+
+- **Objetivos:** Arrancar un agente Cursor en este repo sin desviarse del MVP.
+- **Estructura:** Pasos 1–9 → reglas no negociables.
+- **Contenido a integrar según contexto:** Adapta Node/pnpm y jobs CI de este sitio. No copies instrucciones de otro producto.
+
 1. Cursor → Open Folder → `miwebsite-alexendrosdev` (este repositorio).
 2. Terminal: Node 22 (`engines.node` / `.nvmrc`) → `pnpm install`.
 3. `cp .env.example .env` → rellena `SMTP_*` y `UPSTASH_*` para probar el formulario en local.
 4. `pnpm dev` → http://localhost:4321
 5. `pnpm build && pnpm preview` → estático local (`.vercel/output/static`).
 6. Desde `main`: crea rama `cursor/…`, trabaja, commit, push y **PR en borrador** (no push directo a `main`).
-7. CI en PR: typecheck, lint, format, vitest, build, Playwright axe (6 rutas), LHCI móvil ≥90.
+7. CI en PR: jobs `quality`, `test`, `build`, `smoke`. e2e/axe y LHCI móvil ≥90 son opt-in (label `e2e`).
 8. Merge a `main` = producción en Vercel proyecto **`alexendros-dev`** (apex `https://alexendros.dev`).
 9. Prompt de sesión: pega [`PROMPT_INICIO_CURSOR.md`](./PROMPT_INICIO_CURSOR.md) en Agent mode.
 

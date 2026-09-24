@@ -1,3 +1,11 @@
+### Propósito de este documento
+
+- **Objetivos:** Contrato operativo para agentes de código y el rol Mantenedor: preferencias aprendidas, fuentes de verdad y Definition of Done.
+- **Estructura:** Propósito → preferencias → hechos del workspace → CI canónico.
+- **Contenido a integrar según contexto:** Conserva las preferencias de este portfolio. No copies un `AGENTS.md` de landing/SaaS ni tokens/DS de otro paquete. No reutilices `release.yml` ni cambies pricing/servicios sin confirmación.
+
+**Destinatarios:** agentes de código y el rol Mantenedor. Homogeneizamos **nombres y contratos** (jobs `quality` / `test` / `build` / `smoke`), no el copy del sitio.
+
 ## Learned User Preferences
 
 - Responder siempre en español.
@@ -14,6 +22,6 @@
 - Predecesor Next.js `nuevowebsite-alexendrosdev` archivado; no reutilizar como fuente de verdad.
 - Stack MVP: Astro 4.16 + isla React `ContactForm` (`client:load`) + Tailwind OKLCH + TS estricto + Zod; contacto vía Proton SMTP (`operaciones@alexendros.dev`), honeypot y rate-limit Upstash.
 - `engines.node` fijado a `22.x` (`.nvmrc`); validar Preview tras merge (issue #11).
-- CI esperado: typecheck, lint, format, vitest, build, e2e/axe (6 rutas), LHCI móvil ≥90; LCP objetivo &lt;1.65s.
-- Dependabot: majors (zod 4, nodemailer 10, React/Astro) diferidos (issue #12); no mergear majors sin triage.
+- CI canónico: jobs `quality`, `test`, `build`, `smoke`. e2e/axe (6 rutas) y LHCI móvil ≥90 son **opt-in** (label `e2e`). LCP objetivo &lt;1.65s.
+- Renovate (`.github/renovate.json`) sustituye Dependabot version-updates. Majors (zod 4, nodemailer 10, React/Astro) diferidos (issue #12); no mergear majors sin triage.
 - SMTP/Upstash en Vercel pendientes para que `POST /api/contact` deje de fallar en preview/prod (issue #13).

@@ -1,5 +1,11 @@
 # Política de seguridad
 
+### Propósito de este documento
+
+- **Objetivos:** Declarar versiones soportadas, el canal privado de avisos y la superficie (formulario, webhook, secretos).
+- **Estructura:** Canal → versiones → plazos → secretos → alcance.
+- **Contenido a integrar según contexto:** Adapta env SMTP/Upstash/Cal/Notion de este sitio. No copies la política de un SaaS ni un desk de comunidad. No commitees `.env` ni claves.
+
 ## Canal de reporte
 
 Reporta vulnerabilidades de forma **privada** a `operaciones@alexendros.dev`.
@@ -29,6 +35,8 @@ No abras issues públicos con exploits, PoCs ofensivos, tokens, secretos ni PII.
 - Rotar tokens ante sospecha de fuga o cadencia trimestral mínima del SMTP.
 - `/api/contact` es **fail-closed** sin Upstash o si Redis falla (HTTP 503 genérico). No devolver stacks, detalles Zod, ni nombres de variables al cliente.
 - `/api/cal/webhook` es **fail-closed** sin `CAL_WEBHOOK_SECRET`, Upstash o Notion (HTTP 503 genérico). Firma HMAC inválida → 401 genérico. Redis solo para idempotencia (`alexendros:cal:uid:{uid}:{trigger}`); Notion es la fuente de verdad de Leads. Logs sin PII.
+
+Renovate (`.github/renovate.json`) cubre `npm` y `github-actions`. No hay Dependabot de version-updates.
 
 ## Alcance
 
