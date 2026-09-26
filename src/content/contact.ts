@@ -55,6 +55,7 @@ export const contact = contactSchema.parse({
     'Web nueva o renovación',
     'Revisión y plan de mejora',
     'Plan digital y automatización',
+    'Landing en 10 días',
     'Consulta general',
     'Otro'
   ],
