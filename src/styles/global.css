@@ -58,3 +58,43 @@ pre,
   line-height: 1.7;
   font-size: 0.95rem;
 }
+
+/* Landing banner styles */
+#landing-banner {
+  transition: transform 150ms ease-out;
+}
+#landing-banner.visible {
+  transform: translateY(0);
+}
+#landing-banner.hidden {
+  transform: translateY(100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #landing-banner.reduce-motion {
+    transition: opacity 150ms ease-out;
+    transform: none !important;
+  }
+  #landing-banner.reduce-motion.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  #landing-banner.reduce-motion.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.pb-safe {
+  padding-bottom: max(0px, env(safe-area-inset-bottom));
+}
+
+html.banner-visible {
+  padding-bottom: var(--banner-height, 0px);
+}
+
+@media (max-width: 768px) {
+  html.banner-visible main {
+    padding-bottom: var(--banner-height, 0px);
+  }
+}
