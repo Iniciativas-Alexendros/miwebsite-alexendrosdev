@@ -165,6 +165,66 @@ export const services: Service[] = [
       { label: 'Resultado', value: 'Plan claro' },
       { label: 'Enfoque', value: 'Por fases' }
     ]
+  },
+  {
+    slug: 'landing-10-dias',
+    title: 'Landing en 10 días',
+    short: 'Landing A/B con captura de leads, lista en 10 días laborables desde brief y marca.',
+    description:
+      'Paquete fijo (no web a medida): landing de alto impacto con test A/B del CTA, formulario de leads, tema claro/oscuro, personalización de marca y deploy en Vercel. Base técnica: plantilla PortfolioSaaS (demo: https://landing-ab-testing.vercel.app).',
+    audience:
+      'Negocios locales y profesionales que necesitan una landing de conversión rápida · Campañas o lanzamientos con plazo cerrado · Quien ya tiene marca y copy básico',
+    problems: [
+      'Web genérica que no convierte',
+      'Plazo largo de "web completa"',
+      'No hay captura de leads',
+      'Mensaje poco claro en móvil'
+    ],
+    scope: [
+      'Brief + materiales de marca',
+      'Estructura 1 landing + gracias',
+      'A/B de CTA',
+      'Formulario leads',
+      'Deploy Vercel',
+      'Guía breve de edición de copy'
+    ],
+    deliverables: [
+      'Landing en producción',
+      'Repo privado del cliente',
+      'Guía de edición',
+      'Acceso Vercel acordado'
+    ],
+    process: [
+      'Brief y materiales de marca',
+      'Configuración de marca (site.config / assets)',
+      'Preview para validar',
+      'Ajustes de copy y CTA',
+      'Publicación en el día 10',
+      'Handoff (repo, Vercel, guía de edición)'
+    ],
+    technologies: [
+      'Next.js',
+      'TypeScript',
+      'Tailwind',
+      'A/B CTA (plantilla PortfolioSaaS)',
+      'Vercel',
+      'CI en verde + Lighthouse + accesibilidad (estándar Alexendros)'
+    ],
+    exclusions: [
+      'No ecommerce completo',
+      'No SEO continuo',
+      'No mantenimiento mensual',
+      'No tienda ni pasarela de pago (salvo enlace a contacto/calendario)',
+      'No reescritura total de marca desde cero si faltan textos/logo'
+    ],
+    pricingFrom: 'Desde 990 €',
+    timeline: '10 días laborables desde brief + materiales de marca',
+    cta: '/contacto',
+    metrics: [
+      { label: 'Enfoque', value: 'Conversión' },
+      { label: 'Entrega', value: '10 días' },
+      { label: 'Base', value: 'Plantilla A/B' }
+    ]
   }
 ];
 

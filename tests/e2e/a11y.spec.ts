@@ -5,6 +5,7 @@ const routes = [
   '/',
   '/servicios',
   '/servicios/produccion-sitios-web',
+  '/servicios/landing-10-dias',
   '/proyectos',
   '/proyectos/front-valencia',
   '/como-trabajo',
