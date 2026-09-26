@@ -1,7 +1,7 @@
 import type { ImageMetadata } from 'astro';
 import { z } from 'zod';
-import coverFront from '../assets/projects/front-valencia.svg';
-import coverNasve from '../assets/projects/graficas-nasve.svg';
+import coverFront from '../assets/projects/front-valencia.webp';
+import coverNasve from '../assets/projects/graficas-nasve.webp';
 import coverVcf from '../assets/projects/vcf-cribador.webp';
 import coverMe from '../assets/projects/alexendros-me.webp';
 
@@ -60,7 +60,7 @@ export const projects: Project[] = [
       'Velocidad medida antes de entregar'
     ],
     results: ['Carga mucho más rápida', 'Más reservas desde la web', 'Menú editable en minutos'],
-    links: { prod: 'https://example.com', github: 'https://github.com' },
+    links: { prod: 'https://frontvalencia.com/' },
     published: '2024-03-15',
     featured: true,
     cover: coverFront
@@ -97,7 +97,10 @@ export const projects: Project[] = [
       'Sin depender de un CMS externo'
     ],
     results: ['Presupuesto en minutos', 'Pedidos sin gestión manual', 'Menos tiempo de gestión'],
-    links: { prod: 'https://example.com', github: 'https://github.com' },
+    links: {
+      prod: 'https://ecommerce-graficasnasve.vercel.app/',
+      github: 'https://github.com/Soluciones-Alexendros/ecommerce-graficasnasve'
+    },
     published: '2023-11-20',
     featured: true,
     cover: coverNasve
