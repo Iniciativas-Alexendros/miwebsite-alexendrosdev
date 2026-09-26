@@ -23,7 +23,9 @@ Workflow: `.github/workflows/ci.yml`.
 ## Release
 
 - Conventional Commits. Tipo extra `content` → patch (`.releaserc.json`).
-- Push a `main` con CI verde → tag `vX.Y.Z` + `CHANGELOG.md`.
+- Push a `main` con CI verde → tag `vX.Y.Z` + GitHub Release (notas en el release).
+- **No** hay push de `@semantic-release/git` a `main` (branch protection exige checks; GH006).
+- `CHANGELOG.md` / `package.json` en `main` pueden desfasarse respecto al tag; la fuente de verdad de versión es el tag GitHub.
 - **Versionado ≠ promote.** Vercel Production = merge a `main`.
 
 ## Renovate
